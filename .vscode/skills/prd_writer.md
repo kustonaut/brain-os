@@ -38,7 +38,7 @@ Generate a concise 1-page feature brief:
 1. Same context gathering as `write`
 2. Strict constraint: max 500 words, 5 sections
 3. Format: Problem → Proposal → Success Metric → Risks → Ask
-4. Ideal for leadership reviews and Ship Room presentations
+4. Ideal for leadership reviews and executive presentations
 
 ### `rfc`
 Generate a Request for Comments document:
