@@ -1,0 +1,167 @@
+# PRD Writer — Product Requirements Document Generator
+
+## Trigger
+`/prd_writer` or when user says "write a PRD", "create product spec", "draft requirements doc", "feature spec", "product brief", "one-pager", "RFC", "design doc"
+
+## Purpose
+Generate professional Product Requirements Documents from scratch, signals, or rough notes. Produces structured, stakeholder-ready specs with acceptance criteria, success metrics, and dependency mapping. Supports multiple PRD formats: one-pager, full PRD, RFC, and lightweight brief.
+
+## Actions
+
+### `write` (default)
+Generate a full PRD from user input:
+
+1. **Clarify scope:**
+   - Ask: Feature name, target user, problem statement
+   - If user provides raw notes/signals, extract these automatically
+   - Check `Goals.md` to align with current OKRs
+
+2. **Gather context:**
+   - Read `Charter_Areas.md` for ownership and architecture context
+   - Read `Action_Items.md` for related open work
+   - Check recent signals for supporting evidence
+   - If ADO MCP available, pull related work items
+
+3. **Draft PRD using template:**
+   - Use `_Automation/prompt_templates/prd_template.md` if it exists
+   - Otherwise use the built-in format below
+   - Apply PM heuristics: SIMPLICITY, USER SIGNAL, ACCEPTANCE CRITERIA, BLAST RADIUS, MEASUREMENT
+
+4. **Save and present:**
+   - Save to relevant project folder: `projects/[area]/PRD_[Title]_[Date].md`
+   - If project unclear, save to `_Inbox/` for routing
+   - Show summary in chat
+
+### `one_pager`
+Generate a concise 1-page feature brief:
+
+1. Same context gathering as `write`
+2. Strict constraint: max 500 words, 5 sections
+3. Format: Problem → Proposal → Success Metric → Risks → Ask
+4. Ideal for leadership reviews and Ship Room presentations
+
+### `rfc`
+Generate a Request for Comments document:
+
+1. Emphasize alternatives considered, trade-offs, open questions
+2. Include "Decision Matrix" comparing options
+3. Add "Stakeholder Sign-Off" section with reviewer list
+4. Format: Context → Problem → Options → Recommendation → Open Questions → Decision
+
+### `review`
+Review and score an existing PRD:
+
+1. Read the PRD file
+2. Score against 10-point checklist:
+   - [ ] Problem grounded in data (not assumptions)
+   - [ ] User signal cited (real feedback, telemetry, or incident)
+   - [ ] Acceptance criteria are binary (pass/fail, no ambiguity)
+   - [ ] Success metric has a number and timeframe
+   - [ ] Dependencies listed with owners
+   - [ ] Risks identified with mitigations
+   - [ ] Out of scope explicitly stated
+   - [ ] One-pager test passes (can summarize in 1 page)
+   - [ ] No jargon without definition
+   - [ ] Next steps / ask is clear
+3. Output: Score (X/10) + specific improvement suggestions
+
+### `from_template`
+Generate a PRD from a specific template:
+
+1. List available templates in `_Automation/prompt_templates/`
+2. User selects template
+3. Fill template fields from context + user input
+4. Flag any unfilled fields with ❓
+
+## Context Sources
+1. `00_Daily_Intelligence/Knowledge_Base/Goals.md` — OKR alignment
+2. `00_Daily_Intelligence/Knowledge_Base/Charter_Areas.md` — Scope and ownership
+3. `00_Daily_Intelligence/Knowledge_Base/Action_Items.md` — Related open items
+4. `00_Daily_Intelligence/Knowledge_Base/Partners.md` — Partner context if relevant
+5. `00_Daily_Intelligence/Signals/` — Recent signals for evidence
+6. `_Automation/prompt_templates/prd_template.md` — PRD template (if exists)
+
+## Output Format
+
+### Full PRD
+```markdown
+# PRD: [Feature Title]
+
+| Field | Value |
+|-------|-------|
+| **Author** | [Name] |
+| **Date** | [Today] |
+| **Status** | Draft |
+| **Charter Area** | [Area] |
+| **Related Work** | [ADO IDs / GitHub Issues] |
+
+## Problem Statement
+[Grounded in data — cite specific user signals, telemetry, or incidents]
+
+## User Signal
+[Evidence: customer feedback, support tickets, telemetry anomalies, competitive pressure]
+
+## Proposed Solution
+[Concise description — what, not how]
+
+### User Experience
+[Step-by-step user flow or before/after comparison]
+
+## Acceptance Criteria
+- [ ] [Binary criterion — no ambiguity]
+- [ ] [Binary criterion]
+- [ ] [Binary criterion]
+
+## Success Metrics
+| Metric | Current | Target | Timeframe |
+|--------|---------|--------|-----------|
+| [KPI] | [Baseline] | [Goal] | [When] |
+
+## Dependencies
+| Dependency | Owner | Risk Level |
+|------------|-------|------------|
+| [Component/Team] | [Name] | 🔴/🟡/🟢 |
+
+## Risks & Mitigations
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|------------|
+| [Risk] | H/M/L | H/M/L | [Plan] |
+
+## Out of Scope
+- [Explicitly excluded item]
+
+## Open Questions
+- ❓ [Unresolved question — owner, deadline]
+
+## Timeline
+| Milestone | Date | Status |
+|-----------|------|--------|
+| Spec Approved | [Date] | ⬜ |
+| Dev Start | [Date] | ⬜ |
+| Dogfood | [Date] | ⬜ |
+| GA | [Date] | ⬜ |
+
+---
+*Generated by Brain OS `/prd_writer` — review and iterate before sharing*
+```
+
+## MCP Integration
+- **Azure DevOps MCP** — Pull related work items, create linked items from PRD
+- **GitHub MCP** — Reference issues, link to repos
+- **Work IQ MCP** — Pull team context and related discussions
+
+## Anti-Patterns
+- ❌ Don't write PRDs for vague requests ("make it better") — push back and ask for specifics
+- ❌ Don't invent user signals — only cite real data
+- ❌ Don't exceed 2 pages for a standard PRD — split into multiple specs
+- ❌ Don't skip the success metric — every PRD needs a number
+- ❌ Don't merge multiple features into one PRD — one feature, one doc
+
+## Cross-Skill References
+| Need | Skill |
+|------|-------|
+| Convert signals to PRD | `/insights_to_spec` |
+| Create ADO work items from PRD | `/delegate_ado` |
+| Email PRD to stakeholders | `/m365_email_drafter` |
+| Generate PRD as Word doc | `/m365_doc_generator word` |
+| Review PRD quality | `/deep_review` |

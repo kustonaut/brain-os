@@ -43,7 +43,15 @@ Skills are markdown files in `.vscode/skills/` that teach GitHub Copilot how to 
 | Deep Review | `/deep_review` | Adversarial code review with 3 agents |
 | Insights to Spec | `/insights_to_spec` | Convert analysis into feature specs |
 | Delegate ADO | `/delegate_ado` | Create ADO items from plans |
+### Product Management
 
+| Skill | Invoke | Purpose |
+|-------|--------|--------|
+| PRD Writer | `/prd_writer` | Generate full PRDs from scratch, signals, or rough notes |
+| Design Spec | `/design_spec` | UI/UX specs, technical design docs, Figma handoff briefs |
+| Dashboard Generator | `/dashboard_generator` | Interactive HTML dashboards, Kusto, Excel pivots, Power BI prep |
+| MOM Generator | `/mom` | Minutes of Meeting from transcripts or live notes |
+| KT Session Parser | `/kt_parser` | Parse KT sessions into structured knowledge artifacts |
 ### Documentation
 
 | Skill | Invoke | Purpose |

@@ -136,6 +136,29 @@ Custom skills that turn Copilot into your PM co-pilot:
 | **PM OS Architect** | `/pm_os_architect` | Design and extend your own automation pipeline |
 | **PM OS Eval** | `/pm_os_eval` | Score and regression-test your daily brief quality |
 | **Workspace Kit** | `/pm_workspace_kit` | Setup wizard, portal launch, health check |
+| **PRD Writer** | `/prd_writer` | Generate full PRDs from scratch, signals, or notes |
+| **Dashboard Generator** | `/dashboard_generator` | Interactive HTML dashboards, Kusto, Excel, Power BI |
+| **Design Spec** | `/design_spec` | UI/UX specs, technical design docs, Figma briefs |
+| **MOM Generator** | `/mom` | Minutes of Meeting from transcripts or live notes |
+| **KT Session Parser** | `/kt_parser` | Parse KT sessions into structured knowledge artifacts |
+
+> **See demo artifacts →** [`docs/demos/`](docs/demos/) for example outputs from each skill.
+
+---
+
+## Demo Artifacts
+
+The [`docs/demos/`](docs/demos/) folder contains example outputs showing what Brain OS produces. Open these directly — no setup required:
+
+| Artifact | Skill | Description |
+|----------|-------|-------------|
+| [Sprint Health Dashboard](docs/demos/demo_dashboard_sprint_health.html) | `/dashboard_generator` | Interactive HTML dashboard with KPI cards, burndown chart, risk heatmap, and dark/light theme toggle |
+| [PRD: Notification Center](docs/demos/demo_prd_notification_center.md) | `/prd_writer` | Full Product Requirements Document with problem statement, success metrics, acceptance criteria, risks |
+| [MOM: Sprint Planning](docs/demos/demo_mom_sprint_planning.md) | `/mom` | Minutes of Meeting with decisions table, action items, parking lot items |
+| [Daily Brief: Thursday](docs/demos/demo_daily_brief.md) | Pipeline | AI-generated daily intelligence brief with priorities, meeting prep, OKR progress, focus blocks |
+| [Command Center](docs/demos/demo_command_center.html) | Portal | Static demo of the Brain OS Command Center portal at localhost:8765 |
+
+> All demo content uses fictional data. No real org, team, or personal information.
 
 ---
 
@@ -161,7 +184,7 @@ brain-os/
 │
 ├── .vscode/
 │   ├── tasks.json         ← VS Code task shortcuts
-│   └── skills/            ← 14 GitHub Copilot skills
+│   └── skills/            ← 22 GitHub Copilot skills
 │
 ├── 00_Daily_Intelligence/
 │   ├── Knowledge_Base/    ← Goals, contacts, action items, processes

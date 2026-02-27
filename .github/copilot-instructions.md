@@ -200,6 +200,31 @@ These apply whenever building or modifying automation, scripts, or prompts:
 - **What:** Build evidence-backed incident postmortems with 5 Whys analysis.
 - **Actions:** `postmortem`, `pomo`, `pir`
 
+### PRD Writer (`/prd_writer`)
+- **Skill file:** `.vscode/skills/prd_writer.md`
+- **What:** Generate full Product Requirements Documents from scratch, signals, or rough notes.
+- **Actions:** `write`, `one_pager`, `rfc`, `review`, `from_template`
+
+### Dashboard Generator (`/dashboard_generator`)
+- **Skill file:** `.vscode/skills/dashboard_generator.md`
+- **What:** Generate interactive dashboards — self-contained HTML (Fluent 2), Kusto/ADX, Excel pivots, Power BI data prep.
+- **Actions:** `html`, `kusto`, `excel`, `powerbi`, `refresh`
+
+### Design Spec Generator (`/design_spec`)
+- **Skill file:** `.vscode/skills/design_spec.md`
+- **What:** Generate UI/UX specs, technical design docs, and Figma handoff briefs with Mermaid diagrams.
+- **Actions:** `ui`, `technical`, `figma_brief`, `review`
+
+### MOM Generator (`/mom`)
+- **Skill file:** `.vscode/skills/mom_generator.md`
+- **What:** Generate Minutes of Meeting from transcripts, notes, or live input with structured output.
+- **Actions:** `generate`, `from_transcript`, `template`, `batch`
+
+### KT Session Parser (`/kt_parser`)
+- **Skill file:** `.vscode/skills/kt_session_parser.md`
+- **What:** Parse knowledge transfer and learning sessions into structured artifacts, quizzes, and onboarding guides.
+- **Actions:** `parse`, `series`, `quiz`, `onboard`
+
 ## Always Rules
 These rules apply to EVERY interaction. No exceptions.
 

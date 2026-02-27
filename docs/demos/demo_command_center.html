@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brain OS — Command Center Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root[data-theme="dark"] {
+      --bg-primary: #0a0a14;
+      --bg-secondary: #10101e;
+      --bg-card: #161628;
+      --bg-card-hover: #1c1c34;
+      --bg-sidebar: #0c0c18;
+      --border: #252545;
+      --text-primary: #e8e8f0;
+      --text-secondary: #8888a8;
+      --text-muted: #555577;
+      --accent: #0078d4;
+      --accent-light: #3399e6;
+      --success: #34d399;
+      --success-bg: rgba(52,211,153,0.12);
+      --warning: #fbbf24;
+      --warning-bg: rgba(251,191,36,0.12);
+      --danger: #ef4444;
+      --danger-bg: rgba(239,68,68,0.12);
+      --info: #60a5fa;
+      --info-bg: rgba(96,165,250,0.12);
+      --purple: #a78bfa;
+      --pink: #f472b6;
+      --kpi-gradient: linear-gradient(135deg, #0078d4 0%, #a78bfa 100%);
+    }
+    :root[data-theme="light"] {
+      --bg-primary: #f0f2f5;
+      --bg-secondary: #e8eaed;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f8f9fa;
+      --bg-sidebar: #1b2a4a;
+      --border: #d4d4d8;
+      --text-primary: #1a1a2e;
+      --text-secondary: #555577;
+      --text-muted: #8888a8;
+      --accent: #0078d4;
+      --accent-light: #2b88d8;
+      --success: #059669;
+      --success-bg: rgba(5,150,105,0.08);
+      --warning: #d97706;
+      --warning-bg: rgba(217,119,6,0.08);
+      --danger: #dc2626;
+      --danger-bg: rgba(220,38,38,0.08);
+      --info: #2563eb;
+      --info-bg: rgba(37,99,235,0.08);
+      --purple: #7c3aed;
+      --pink: #db2777;
+      --kpi-gradient: linear-gradient(135deg, #0078d4 0%, #7c3aed 100%);
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+    .sidebar-brand {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sidebar-brand .logo {
+      font-size: 32px;
+      margin-bottom: 4px;
+    }
+    .sidebar-brand h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .sidebar-brand .sub {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .sidebar-nav {
+      padding: 16px 0;
+      flex: 1;
+    }
+    .nav-section {
+      padding: 0 16px;
+      margin-bottom: 8px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+      border-left: 3px solid transparent;
+    }
+    .nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+    .nav-item.active {
+      background: rgba(0,120,212,0.15);
+      color: #fff;
+      border-left-color: var(--accent);
+    }
+    .nav-item .icon { font-size: 16px; width: 20px; text-align: center; }
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+    }
+
+    /* Main Content */
+    .content { flex: 1; overflow-y: auto; }
+
+    /* Top Bar */
+    .topbar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 16px; }
+    .topbar-greeting {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .topbar-date {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .status-live { background: var(--success-bg); color: var(--success); }
+    .status-stale { background: var(--warning-bg); color: var(--warning); }
+    .theme-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .theme-btn:hover { border-color: var(--accent); }
+
+    /* KPI Strip */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      padding: 20px 28px;
+    }
+    .kpi {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      transition: transform 0.15s;
+    }
+    .kpi:hover { transform: translateY(-2px); }
+    .kpi .value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .kpi .label {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+    .kpi .trend {
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    /* Main Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      padding: 0 28px 28px;
+    }
+    @media (max-width: 1000px) { .main-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .card-header h3 {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-header .badge-count {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .card-header .action-link {
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Brief Preview */
+    .brief-content {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .brief-content h4 {
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: 600;
+      margin: 12px 0 6px;
+    }
+    .brief-content h4:first-child { margin-top: 0; }
+    .brief-content ul {
+      padding-left: 18px;
+      margin: 4px 0;
+    }
+    .brief-content li { margin: 2px 0; }
+    .priority-tag {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .tag-red { background: var(--danger-bg); color: var(--danger); }
+    .tag-yellow { background: var(--warning-bg); color: var(--warning); }
+    .tag-green { background: var(--success-bg); color: var(--success); }
+
+    /* Calendar */
+    .cal-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cal-item:last-child { border: none; }
+    .cal-time {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      min-width: 54px;
+      text-align: right;
+    }
+    .cal-details {
+      flex: 1;
+    }
+    .cal-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .cal-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Action Items */
+    .ai-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .ai-item:last-child { border: none; }
+    .ai-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ai-dot-red { background: var(--danger); }
+    .ai-dot-yellow { background: var(--warning); }
+    .ai-dot-gray { background: var(--text-muted); }
+    .ai-owner {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    /* Project Tiles */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      padding: 0 28px 28px;
+    }
+    .project-tile {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .project-tile:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-tile .icon { font-size: 24px; margin-bottom: 8px; }
+    .project-tile .name {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .project-tile .desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .project-tile .stat {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    /* Tools Bar */
+    .tools-bar {
+      display: flex;
+      gap: 10px;
+      padding: 0 28px 20px;
+      flex-wrap: wrap;
+    }
+    .tool-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tool-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+    .tool-btn .icon { font-size: 14px; }
+
+    /* Signal badges */
+    .signal-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .signal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .signal-email { background: var(--info-bg); color: var(--info); }
+    .signal-ado { background: var(--purple); color: #fff; opacity: 0.85; }
+    .signal-cal { background: var(--success-bg); color: var(--success); }
+    .signal-chat { background: var(--warning-bg); color: var(--warning); }
+
+    /* Footer */
+    .page-footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 10px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+    .page-footer a { color: var(--accent); text-decoration: none; }
+
+    /* Demo banner */
+    .demo-banner {
+      background: linear-gradient(135deg, rgba(0,120,212,0.15), rgba(167,139,250,0.15));
+      border: 1px solid rgba(0,120,212,0.3);
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin: 20px 28px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .demo-banner strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">🧠</div>
+      <h2>BRAIN OS</h2>
+      <div class="sub">Command Center</div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-section">Intelligence</div>
+      <div class="nav-item active"><span class="icon">📊</span> Dashboard</div>
+      <div class="nav-item"><span class="icon">📋</span> Daily Brief</div>
+      <div class="nav-item"><span class="icon">📡</span> Signals</div>
+      <div class="nav-item"><span class="icon">📅</span> Calendar</div>
+
+      <div class="nav-section" style="margin-top:16px">Projects</div>
+      <div class="nav-item"><span class="icon">🔧</span> Platform APIs</div>
+      <div class="nav-item"><span class="icon">🛡️</span> Security</div>
+      <div class="nav-item"><span class="icon">📦</span> Dev Tools</div>
+      <div class="nav-item"><span class="icon">🐛</span> In-Market</div>
+
+      <div class="nav-section" style="margin-top:16px">Tools</div>
+      <div class="nav-item"><span class="icon">⚡</span> Run Pipeline</div>
+      <div class="nav-item"><span class="icon">🔍</span> Search Files</div>
+      <div class="nav-item"><span class="icon">⚙️</span> Settings</div>
+    </div>
+    <div class="sidebar-footer">
+      v2.1.0 · Localhost · Port 8765
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Top Bar -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <div>
+          <div class="topbar-greeting">Good morning ☀️</div>
+          <div class="topbar-date">Thursday, February 27, 2026 · Week 9</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span class="status-chip status-live">● Pipeline ran 08:35 AM</span>
+        <button class="theme-btn" onclick="toggleTheme()">🌙 / ☀️</button>
+      </div>
+    </div>
+
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+      <span>ℹ️</span>
+      <span>This is a <strong>static demo</strong> of the Brain OS Command Center. The live portal auto-refreshes with real data from your daily pipeline.</span>
+    </div>
+
+    <!-- KPI Strip -->
+    <section class="kpi-strip">
+      <div class="kpi">
+        <div class="value" style="color:var(--info)">12</div>
+        <div class="label">Emails</div>
+        <div class="trend" style="color:var(--success)">▲ 3 flagged</div>
+      </div>
+      <div class="kpi">
+        <div class="value" style="color:var(--success)">5</div>
+        <div class="label">Meetings</div>
+        <div class="trend" style="color:var(--text-muted)">2h free slots</div>
+      </div>
+      <div class="kpi">
+        <div class="value" style="color:var(--warning)">8</div>
+        <div class="label">ADO Active</div>
+        <div class="trend" style="color:var(--danger)">1 blocked</div>
+      </div>
+      <div class="kpi">
+        <div class="value" style="color:var(--danger)">3</div>
+        <div class="label">🔴 Urgent</div>
+        <div class="trend" style="color:var(--danger)">Due today/tomorrow</div>
+      </div>
+      <div class="kpi">
+        <div class="value" style="color:var(--purple)">92</div>
+        <div class="label">Brief Score</div>
+        <div class="trend" style="color:var(--success)">▲ vs 87 avg</div>
+      </div>
+    </section>
+
+    <!-- Main Grid -->
+    <section class="main-grid">
+      <!-- Daily Brief -->
+      <div class="card">
+        <div class="card-header">
+          <h3>📋 Daily Brief <span class="badge-count">Feb 27</span></h3>
+          <span class="action-link">View Full Brief →</span>
+        </div>
+        <div class="brief-content">
+          <h4>🔴 Priority Actions</h4>
+          <ul>
+            <li><span class="priority-tag tag-red">P0</span> API v2 vendor response due today — draft reply by 11 AM</li>
+            <li><span class="priority-tag tag-red">P0</span> DND scheduling design blocked — follow up with UX team</li>
+            <li><span class="priority-tag tag-yellow">P1</span> Sprint 14 at 33% with 8 days left — escalation candidate for Monday</li>
+          </ul>
+
+          <h4>📅 Key Meetings</h4>
+          <ul>
+            <li><strong>10:00</strong> — Sprint Standup (15 min) · Prep: blocked item update</li>
+            <li><strong>14:00</strong> — Partner Sync: DataVault (45 min) · Prep: integration timeline</li>
+            <li><strong>16:00</strong> — Product Review (60 min) · Prep: sprint metrics deck</li>
+          </ul>
+
+          <h4>📊 Signals Summary</h4>
+          <div class="signal-row">
+            <span class="signal-badge signal-email">📧 12 emails · 3 flagged</span>
+            <span class="signal-badge signal-ado">🗂️ 8 ADO active · 1 blocked</span>
+            <span class="signal-badge signal-cal">📅 5 meetings · 2h free</span>
+            <span class="signal-badge signal-chat">💬 4 chat threads · 1 mention</span>
+          </div>
+
+          <h4>🎯 OKR Pulse</h4>
+          <ul>
+            <li><span class="priority-tag tag-yellow">75%</span> Ship MVP to dogfood (Mar 1 target)</li>
+            <li><span class="priority-tag tag-green">85%</span> Reduce "missed alert" tickets by 50%</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <!-- Calendar -->
+        <div class="card">
+          <div class="card-header">
+            <h3>📅 Today's Calendar</h3>
+          </div>
+          <div class="cal-item">
+            <div class="cal-time">9:00</div>
+            <div class="cal-details">
+              <div class="cal-title">☕ Focus Block</div>
+              <div class="cal-meta">Auto-blocked · Deep work</div>
+            </div>
+          </div>
+          <div class="cal-item">
+            <div class="cal-time">10:00</div>
+            <div class="cal-details">
+              <div class="cal-title">Sprint Standup</div>
+              <div class="cal-meta">Teams · 15 min · 4 attendees</div>
+            </div>
+          </div>
+          <div class="cal-item">
+            <div class="cal-time" style="color:var(--success)">11:00</div>
+            <div class="cal-details">
+              <div class="cal-title" style="color:var(--success)">🟢 Free Slot</div>
+              <div class="cal-meta">60 min available</div>
+            </div>
+          </div>
+          <div class="cal-item">
+            <div class="cal-time">14:00</div>
+            <div class="cal-details">
+              <div class="cal-title">Partner Sync: DataVault</div>
+              <div class="cal-meta">Teams · 45 min · External</div>
+            </div>
+          </div>
+          <div class="cal-item">
+            <div class="cal-time">16:00</div>
+            <div class="cal-details">
+              <div class="cal-title">Product Review</div>
+              <div class="cal-meta">Room A · 60 min · Leadership</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Items -->
+        <div class="card">
+          <div class="card-header">
+            <h3>⚡ Action Items <span class="badge-count">6</span></h3>
+          </div>
+          <div class="ai-item">
+            <span class="ai-dot ai-dot-red"></span>
+            <span>Reply to DataVault API v2 proposal</span>
+            <span class="ai-owner">Due: Today</span>
+          </div>
+          <div class="ai-item">
+            <span class="ai-dot ai-dot-red"></span>
+            <span>Unblock DND design sign-off</span>
+            <span class="ai-owner">Due: Today</span>
+          </div>
+          <div class="ai-item">
+            <span class="ai-dot ai-dot-red"></span>
+            <span>Prepare sprint metrics for Product Review</span>
+            <span class="ai-owner">Due: 4 PM</span>
+          </div>
+          <div class="ai-item">
+            <span class="ai-dot ai-dot-yellow"></span>
+            <span>Update PRD with accessibility requirements</span>
+            <span class="ai-owner">Due: Fri</span>
+          </div>
+          <div class="ai-item">
+            <span class="ai-dot ai-dot-yellow"></span>
+            <span>Write cross-device sync spec draft</span>
+            <span class="ai-owner">Due: Mon</span>
+          </div>
+          <div class="ai-item">
+            <span class="ai-dot ai-dot-gray"></span>
+            <span>Schedule KT session with new team member</span>
+            <span class="ai-owner">Due: Next week</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Tiles -->
+    <h3 style="padding:0 28px 12px;font-size:14px;font-weight:600">📁 Projects</h3>
+    <section class="projects-grid">
+      <div class="project-tile">
+        <div class="icon">🔧</div>
+        <div class="name">Platform APIs</div>
+        <div class="desc">Add-in APIs, WebView2, Extensibility</div>
+        <div class="stat">14 files · Updated today</div>
+      </div>
+      <div class="project-tile">
+        <div class="icon">🛡️</div>
+        <div class="name">Data Loss Prevention</div>
+        <div class="desc">DLP policies, sensitivity labels</div>
+        <div class="stat">8 files · Updated 2d ago</div>
+      </div>
+      <div class="project-tile">
+        <div class="icon">📦</div>
+        <div class="name">Dev Experiences</div>
+        <div class="desc">Developer tools, docs, samples</div>
+        <div class="stat">5 files · Updated 4d ago</div>
+      </div>
+      <div class="project-tile">
+        <div class="icon">🐛</div>
+        <div class="name">In-Market</div>
+        <div class="desc">Issue management, triage, partner support</div>
+        <div class="stat">22 files · Updated today</div>
+      </div>
+      <div class="project-tile">
+        <div class="icon">📊</div>
+        <div class="name">Reporting</div>
+        <div class="desc">OKRs, scorecards, team metrics</div>
+        <div class="stat">19 files · Updated 1d ago</div>
+      </div>
+    </section>
+
+    <!-- Tools Bar -->
+    <h3 style="padding:0 28px 12px;font-size:14px;font-weight:600">🛠️ Quick Actions</h3>
+    <section class="tools-bar">
+      <button class="tool-btn"><span class="icon">⚡</span> Run Pipeline</button>
+      <button class="tool-btn"><span class="icon">📡</span> Refresh Signals</button>
+      <button class="tool-btn"><span class="icon">📋</span> Generate Brief</button>
+      <button class="tool-btn"><span class="icon">🗑️</span> Run Cleanup</button>
+      <button class="tool-btn"><span class="icon">📸</span> Weekly Snapshot</button>
+      <button class="tool-btn"><span class="icon">🔍</span> Search Files</button>
+      <button class="tool-btn"><span class="icon">📊</span> GitHub Dashboard</button>
+      <button class="tool-btn"><span class="icon">⚙️</span> Config</button>
+    </section>
+
+    <footer class="page-footer">
+      Brain OS Command Center v2.1.0 · <a href="https://github.com/kustonaut/brain-os">github.com/kustonaut/brain-os</a> · Static demo — live portal auto-refreshes every 5 min
+    </footer>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprint Health Dashboard — Brain OS Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root[data-theme="dark"] {
+      --bg-primary: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --bg-card-hover: #1e1e35;
+      --border: #2a2a4a;
+      --text-primary: #e8e8f0;
+      --text-secondary: #8888a8;
+      --text-muted: #555577;
+      --accent: #0078d4;
+      --accent-light: #3399e6;
+      --success: #34d399;
+      --success-bg: rgba(52,211,153,0.1);
+      --warning: #fbbf24;
+      --warning-bg: rgba(251,191,36,0.1);
+      --danger: #ef4444;
+      --danger-bg: rgba(239,68,68,0.1);
+      --info: #60a5fa;
+      --info-bg: rgba(96,165,250,0.1);
+      --purple: #a78bfa;
+      --pink: #f472b6;
+    }
+
+    :root[data-theme="light"] {
+      --bg-primary: #f0f2f5;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f8f9fa;
+      --border: #e0e0e0;
+      --text-primary: #1a1a2e;
+      --text-secondary: #555577;
+      --text-muted: #8888a8;
+      --accent: #0078d4;
+      --accent-light: #2b88d8;
+      --success: #059669;
+      --success-bg: rgba(5,150,105,0.08);
+      --warning: #d97706;
+      --warning-bg: rgba(217,119,6,0.08);
+      --danger: #dc2626;
+      --danger-bg: rgba(220,38,38,0.08);
+      --info: #2563eb;
+      --info-bg: rgba(37,99,235,0.08);
+      --purple: #7c3aed;
+      --pink: #db2777;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header h1 .icon { font-size: 24px; }
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .badge {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-live { background: var(--success-bg); color: var(--success); }
+    .badge-sprint { background: var(--info-bg); color: var(--info); }
+    .theme-toggle {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .theme-toggle:hover { border-color: var(--accent); }
+
+    /* Main */
+    .main { padding: 24px 32px; max-width: 1400px; margin: 0 auto; }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .kpi-label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .kpi-value { font-size: 32px; font-weight: 700; margin-bottom: 4px; }
+    .kpi-trend { font-size: 12px; display: flex; align-items: center; gap: 4px; }
+    .trend-up { color: var(--success); }
+    .trend-down { color: var(--danger); }
+    .trend-flat { color: var(--text-muted); }
+
+    /* Charts Section */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } }
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .chart-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chart-title .subtitle { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+
+    /* SVG Charts */
+    .bar { transition: opacity 0.2s; }
+    .bar:hover { opacity: 0.8; }
+    .chart-label { font-size: 10px; fill: var(--text-secondary); font-family: 'Segoe UI', sans-serif; }
+    .chart-value { font-size: 9px; fill: var(--text-primary); font-family: 'Segoe UI', sans-serif; font-weight: 600; }
+    .axis-line { stroke: var(--border); stroke-width: 1; }
+    .grid-line { stroke: var(--border); stroke-width: 0.5; stroke-dasharray: 3,3; }
+
+    /* Data Table */
+    .table-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .table-header h3 { font-size: 14px; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      text-align: left;
+      padding: 10px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--border);
+    }
+    td {
+      padding: 10px 12px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:hover td { background: var(--bg-card-hover); }
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .status-done { background: var(--success); }
+    .status-progress { background: var(--accent); }
+    .status-blocked { background: var(--danger); }
+    .status-new { background: var(--text-muted); }
+    .priority-high { color: var(--danger); font-weight: 600; }
+    .priority-med { color: var(--warning); }
+    .priority-low { color: var(--success); }
+    .owner-chip {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      background: var(--info-bg);
+      color: var(--info);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 11px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* Burndown chart specific */
+    .line-ideal { stroke: var(--text-muted); stroke-width: 1.5; stroke-dasharray: 6,4; fill: none; }
+    .line-actual { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+    .dot-actual { fill: var(--accent); }
+    .area-actual { fill: var(--accent); opacity: 0.08; }
+
+    @media print {
+      body { background: #fff; color: #333; }
+      .theme-toggle { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>
+      <span class="icon">📊</span>
+      Sprint Health Dashboard
+    </h1>
+    <div class="header-meta">
+      <span class="badge badge-sprint">Sprint 14</span>
+      <span class="badge badge-live">● Live</span>
+      <span style="font-size:12px;color:var(--text-muted)">Last refreshed: Feb 27, 2026 08:35 AM</span>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- KPI Cards -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Velocity</div>
+        <div class="kpi-value" style="color:var(--accent)">8<span style="font-size:16px;color:var(--text-muted)">/24 pts</span></div>
+        <div class="kpi-trend trend-up">▲ 33% complete — on track</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Items Done</div>
+        <div class="kpi-value" style="color:var(--success)">10</div>
+        <div class="kpi-trend trend-up">▲ +1 from yesterday</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">In Progress</div>
+        <div class="kpi-value" style="color:var(--warning)">5</div>
+        <div class="kpi-trend trend-up">▲ +2 from yesterday</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Blocked</div>
+        <div class="kpi-value" style="color:var(--danger)">1</div>
+        <div class="kpi-trend trend-down">▼ DND design sign-off needed</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Days Remaining</div>
+        <div class="kpi-value">8</div>
+        <div class="kpi-trend trend-flat">— Sprint ends Mar 7</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Cycle Time</div>
+        <div class="kpi-value" style="color:var(--purple)">2.3<span style="font-size:16px;color:var(--text-muted)">d</span></div>
+        <div class="kpi-trend trend-up">▲ Improved from 3.1d (Sprint 13)</div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-grid">
+      <!-- Burndown Chart -->
+      <div class="chart-card">
+        <div class="chart-title">
+          Sprint Burndown
+          <span class="subtitle">Story Points remaining</span>
+        </div>
+        <svg viewBox="0 0 480 220" width="100%" height="220">
+          <!-- Grid -->
+          <line x1="50" y1="20" x2="50" y2="190" class="axis-line"/>
+          <line x1="50" y1="190" x2="460" y2="190" class="axis-line"/>
+          <line x1="50" y1="148" x2="460" y2="148" class="grid-line"/>
+          <line x1="50" y1="106" x2="460" y2="106" class="grid-line"/>
+          <line x1="50" y1="64" x2="460" y2="64" class="grid-line"/>
+          <line x1="50" y1="22" x2="460" y2="22" class="grid-line"/>
+
+          <!-- Y-axis labels -->
+          <text x="44" y="194" text-anchor="end" class="chart-label">0</text>
+          <text x="44" y="152" text-anchor="end" class="chart-label">6</text>
+          <text x="44" y="110" text-anchor="end" class="chart-label">12</text>
+          <text x="44" y="68" text-anchor="end" class="chart-label">18</text>
+          <text x="44" y="26" text-anchor="end" class="chart-label">24</text>
+
+          <!-- X-axis labels (days) -->
+          <text x="50" y="206" text-anchor="middle" class="chart-label">D1</text>
+          <text x="91" y="206" text-anchor="middle" class="chart-label">D2</text>
+          <text x="132" y="206" text-anchor="middle" class="chart-label">D3</text>
+          <text x="173" y="206" text-anchor="middle" class="chart-label">D4</text>
+          <text x="214" y="206" text-anchor="middle" class="chart-label">D5</text>
+          <text x="255" y="206" text-anchor="middle" class="chart-label">D6</text>
+          <text x="296" y="206" text-anchor="middle" class="chart-label">D7</text>
+          <text x="337" y="206" text-anchor="middle" class="chart-label">D8</text>
+          <text x="378" y="206" text-anchor="middle" class="chart-label">D9</text>
+          <text x="419" y="206" text-anchor="middle" class="chart-label">D10</text>
+          <text x="460" y="206" text-anchor="middle" class="chart-label">D11</text>
+
+          <!-- Ideal line -->
+          <polyline points="50,22 91,37 132,53 173,68 214,83 255,99 296,114 337,130 378,148 419,162 460,190" class="line-ideal"/>
+
+          <!-- Actual area fill -->
+          <polygon points="50,22 91,30 132,44 173,68 214,85 255,85 255,190 214,190 173,190 132,190 91,190 50,190" class="area-actual"/>
+
+          <!-- Actual line (up to current day 6) -->
+          <polyline points="50,22 91,30 132,44 173,68 214,85 255,85" class="line-actual"/>
+
+          <!-- Dots for actual -->
+          <circle cx="50" cy="22" r="4" class="dot-actual"/>
+          <circle cx="91" cy="30" r="4" class="dot-actual"/>
+          <circle cx="132" cy="44" r="4" class="dot-actual"/>
+          <circle cx="173" cy="68" r="4" class="dot-actual"/>
+          <circle cx="214" cy="85" r="4" class="dot-actual"/>
+          <circle cx="255" cy="85" r="4" class="dot-actual"/>
+
+          <!-- Values -->
+          <text x="50" y="16" text-anchor="middle" class="chart-value">24</text>
+          <text x="91" y="24" text-anchor="middle" class="chart-value">23</text>
+          <text x="132" y="38" text-anchor="middle" class="chart-value">21</text>
+          <text x="173" y="62" text-anchor="middle" class="chart-value">18</text>
+          <text x="214" y="79" text-anchor="middle" class="chart-value">16</text>
+          <text x="255" y="79" text-anchor="middle" class="chart-value">16</text>
+
+          <!-- Today marker -->
+          <line x1="255" y1="20" x2="255" y2="190" stroke="#f472b6" stroke-width="1" stroke-dasharray="4,4"/>
+          <text x="255" y="14" text-anchor="middle" style="font-size:9px;fill:#f472b6;font-family:'Segoe UI',sans-serif;font-weight:600">TODAY</text>
+
+          <!-- Legend -->
+          <line x1="310" y1="12" x2="330" y2="12" class="line-ideal"/>
+          <text x="335" y="15" class="chart-label">Ideal</text>
+          <line x1="370" y1="12" x2="390" y2="12" class="line-actual"/>
+          <text x="395" y="15" class="chart-label">Actual</text>
+        </svg>
+      </div>
+
+      <!-- Work Item Breakdown -->
+      <div class="chart-card">
+        <div class="chart-title">
+          Work Item Breakdown
+          <span class="subtitle">By status and type</span>
+        </div>
+        <svg viewBox="0 0 480 220" width="100%" height="220">
+          <!-- Grid -->
+          <line x1="80" y1="20" x2="80" y2="180" class="axis-line"/>
+          <line x1="80" y1="180" x2="460" y2="180" class="axis-line"/>
+
+          <!-- Horizontal bars -->
+          <!-- Done: 10 items -->
+          <rect x="82" y="28" width="300" height="28" rx="4" fill="#34d399" class="bar" opacity="0.85"/>
+          <text x="76" y="46" text-anchor="end" class="chart-label">Done</text>
+          <text x="390" y="46" class="chart-value">10 items (42%)</text>
+
+          <!-- In Progress: 5 items -->
+          <rect x="82" y="64" width="150" height="28" rx="4" fill="#0078d4" class="bar" opacity="0.85"/>
+          <text x="76" y="82" text-anchor="end" class="chart-label">Active</text>
+          <text x="240" y="82" class="chart-value">5 items (21%)</text>
+
+          <!-- New: 3 items -->
+          <rect x="82" y="100" width="90" height="28" rx="4" fill="#555577" class="bar" opacity="0.85"/>
+          <text x="76" y="118" text-anchor="end" class="chart-label">New</text>
+          <text x="180" y="118" class="chart-value">3 items (12%)</text>
+
+          <!-- Blocked: 1 item -->
+          <rect x="82" y="136" width="30" height="28" rx="4" fill="#ef4444" class="bar" opacity="0.85"/>
+          <text x="76" y="154" text-anchor="end" class="chart-label">Blocked</text>
+          <text x="120" y="154" class="chart-value">1 item (4%)</text>
+
+          <!-- Type breakdown legend -->
+          <rect x="82" y="188" width="10" height="10" rx="2" fill="#60a5fa"/>
+          <text x="96" y="197" class="chart-label">User Story (12)</text>
+          <rect x="170" y="188" width="10" height="10" rx="2" fill="#a78bfa"/>
+          <text x="184" y="197" class="chart-label">Bug (4)</text>
+          <rect x="230" y="188" width="10" height="10" rx="2" fill="#fbbf24"/>
+          <text x="244" y="197" class="chart-label">Task (3)</text>
+        </svg>
+      </div>
+
+      <!-- Team Allocation -->
+      <div class="chart-card">
+        <div class="chart-title">
+          Team Allocation
+          <span class="subtitle">Story points by assignee</span>
+        </div>
+        <svg viewBox="0 0 480 220" width="100%" height="220">
+          <line x1="100" y1="20" x2="100" y2="190" class="axis-line"/>
+          <line x1="100" y1="190" x2="460" y2="190" class="axis-line"/>
+
+          <!-- Grid lines -->
+          <line x1="100" y1="190" x2="460" y2="190" class="grid-line"/>
+          <text x="100" y="204" text-anchor="middle" class="chart-label">0</text>
+          <text x="190" y="204" text-anchor="middle" class="chart-label">2</text>
+          <text x="280" y="204" text-anchor="middle" class="chart-label">4</text>
+          <text x="370" y="204" text-anchor="middle" class="chart-label">6</text>
+          <text x="460" y="204" text-anchor="middle" class="chart-label">8</text>
+
+          <!-- Alex Kim: 8 pts -->
+          <rect x="102" y="28" width="360" height="24" rx="4" fill="#0078d4" class="bar" opacity="0.85"/>
+          <text x="96" y="44" text-anchor="end" class="chart-label">Alex K.</text>
+          <text x="468" y="44" class="chart-value">8 pts</text>
+
+          <!-- Marcus R: 5 pts -->
+          <rect x="102" y="60" width="225" height="24" rx="4" fill="#a78bfa" class="bar" opacity="0.85"/>
+          <text x="96" y="76" text-anchor="end" class="chart-label">Marcus R.</text>
+          <text x="333" y="76" class="chart-value">5 pts</text>
+
+          <!-- Jordan L: 5 pts -->
+          <rect x="102" y="92" width="225" height="24" rx="4" fill="#34d399" class="bar" opacity="0.85"/>
+          <text x="96" y="108" text-anchor="end" class="chart-label">Jordan L.</text>
+          <text x="333" y="108" class="chart-value">5 pts</text>
+
+          <!-- Priya P: 3 pts -->
+          <rect x="102" y="124" width="135" height="24" rx="4" fill="#fbbf24" class="bar" opacity="0.85"/>
+          <text x="96" y="140" text-anchor="end" class="chart-label">Priya P.</text>
+          <text x="243" y="140" class="chart-value">3 pts</text>
+
+          <!-- Sarah C: 3 pts -->
+          <rect x="102" y="156" width="135" height="24" rx="4" fill="#f472b6" class="bar" opacity="0.85"/>
+          <text x="96" y="172" text-anchor="end" class="chart-label">Sarah C.</text>
+          <text x="243" y="172" class="chart-value">3 pts</text>
+
+          <!-- Capacity indicator -->
+          <line x1="370" y1="20" x2="370" y2="185" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,4"/>
+          <text x="370" y="14" text-anchor="middle" style="font-size:8px;fill:#ef4444;font-family:'Segoe UI',sans-serif">CAPACITY (6 pts/person)</text>
+        </svg>
+      </div>
+
+      <!-- Risk Heatmap -->
+      <div class="chart-card">
+        <div class="chart-title">
+          Risk Heatmap
+          <span class="subtitle">Feature risks by likelihood × impact</span>
+        </div>
+        <svg viewBox="0 0 480 220" width="100%" height="220">
+          <!-- Grid -->
+          <text x="240" y="16" text-anchor="middle" style="font-size:10px;fill:var(--text-muted);font-family:'Segoe UI',sans-serif">IMPACT →</text>
+          <text x="20" y="120" text-anchor="middle" style="font-size:10px;fill:var(--text-muted);font-family:'Segoe UI',sans-serif;writing-mode:tb">LIKELIHOOD →</text>
+
+          <!-- 3x3 grid cells -->
+          <!-- Low-Low (green) -->
+          <rect x="100" y="140" width="110" height="50" rx="6" fill="#34d399" opacity="0.15" stroke="#34d399" stroke-width="0.5"/>
+          <text x="155" y="170" text-anchor="middle" style="font-size:9px;fill:#34d399;font-family:'Segoe UI',sans-serif">Low Risk</text>
+
+          <!-- Low-Med (green) -->
+          <rect x="220" y="140" width="110" height="50" rx="6" fill="#34d399" opacity="0.1" stroke="#34d399" stroke-width="0.5"/>
+
+          <!-- Low-High (yellow) -->
+          <rect x="340" y="140" width="110" height="50" rx="6" fill="#fbbf24" opacity="0.15" stroke="#fbbf24" stroke-width="0.5"/>
+
+          <!-- Med-Low (green) -->
+          <rect x="100" y="80" width="110" height="50" rx="6" fill="#34d399" opacity="0.1" stroke="#34d399" stroke-width="0.5"/>
+
+          <!-- Med-Med (yellow) -->
+          <rect x="220" y="80" width="110" height="50" rx="6" fill="#fbbf24" opacity="0.15" stroke="#fbbf24" stroke-width="0.5"/>
+          <text x="275" y="102" text-anchor="middle" style="font-size:8px;fill:#fbbf24;font-family:'Segoe UI',sans-serif;font-weight:600">Cross-device sync</text>
+          <text x="275" y="118" text-anchor="middle" style="font-size:8px;fill:#fbbf24;font-family:'Segoe UI',sans-serif;font-weight:600">Digest email</text>
+
+          <!-- Med-High (red) -->
+          <rect x="340" y="80" width="110" height="50" rx="6" fill="#ef4444" opacity="0.15" stroke="#ef4444" stroke-width="0.5"/>
+          <text x="395" y="110" text-anchor="middle" style="font-size:8px;fill:#ef4444;font-family:'Segoe UI',sans-serif;font-weight:600">API v2 delay</text>
+
+          <!-- High-Low (yellow) -->
+          <rect x="100" y="24" width="110" height="50" rx="6" fill="#fbbf24" opacity="0.1" stroke="#fbbf24" stroke-width="0.5"/>
+
+          <!-- High-Med (red) -->
+          <rect x="220" y="24" width="110" height="50" rx="6" fill="#ef4444" opacity="0.1" stroke="#ef4444" stroke-width="0.5"/>
+
+          <!-- High-High (red) -->
+          <rect x="340" y="24" width="110" height="50" rx="6" fill="#ef4444" opacity="0.2" stroke="#ef4444" stroke-width="0.5"/>
+
+          <!-- Axis labels -->
+          <text x="155" y="200" text-anchor="middle" class="chart-label">Low</text>
+          <text x="275" y="200" text-anchor="middle" class="chart-label">Medium</text>
+          <text x="395" y="200" text-anchor="middle" class="chart-label">High</text>
+          <text x="60" y="168" text-anchor="middle" class="chart-label">Low</text>
+          <text x="60" y="108" text-anchor="middle" class="chart-label">Med</text>
+          <text x="60" y="52" text-anchor="middle" class="chart-label">High</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Work Items Table -->
+    <div class="table-card">
+      <div class="table-header">
+        <h3>📋 Active Work Items</h3>
+        <span style="font-size:12px;color:var(--text-muted)">19 total items · Sprint 14</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Owner</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--text-muted)">#1401</td>
+            <td><strong>Priority filtering UI</strong></td>
+            <td>User Story</td>
+            <td><span class="status-dot status-progress"></span>In Progress</td>
+            <td class="priority-high">P1</td>
+            <td><span class="owner-chip">Marcus R.</span></td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1402</td>
+            <td><strong>DND scheduling backend</strong></td>
+            <td>User Story</td>
+            <td><span class="status-dot status-blocked"></span>Blocked</td>
+            <td class="priority-high">P1</td>
+            <td><span class="owner-chip">Alex K.</span></td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1403</td>
+            <td><strong>Daily digest email template</strong></td>
+            <td>User Story</td>
+            <td><span class="status-dot status-progress"></span>In Progress</td>
+            <td class="priority-med">P2</td>
+            <td><span class="owner-chip">Sarah C.</span></td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1404</td>
+            <td><strong>Cross-device sync (WebSocket)</strong></td>
+            <td>User Story</td>
+            <td><span class="status-dot status-progress"></span>In Progress</td>
+            <td class="priority-high">P1</td>
+            <td><span class="owner-chip">Jordan L.</span></td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1405</td>
+            <td><strong>Accessibility audit prep</strong></td>
+            <td>Task</td>
+            <td><span class="status-dot status-progress"></span>In Progress</td>
+            <td class="priority-med">P2</td>
+            <td><span class="owner-chip">Marcus R.</span></td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1406</td>
+            <td><strong>RTL language test matrix</strong></td>
+            <td>Task</td>
+            <td><span class="status-dot status-progress"></span>In Progress</td>
+            <td class="priority-med">P2</td>
+            <td><span class="owner-chip">Priya P.</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1390</td>
+            <td>Notification feed MVP</td>
+            <td>User Story</td>
+            <td><span class="status-dot status-done"></span>Done</td>
+            <td class="priority-high">P1</td>
+            <td><span class="owner-chip">Alex K.</span></td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1391</td>
+            <td>Feed loading skeleton UI</td>
+            <td>User Story</td>
+            <td><span class="status-dot status-done"></span>Done</td>
+            <td class="priority-med">P2</td>
+            <td><span class="owner-chip">Marcus R.</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1385</td>
+            <td>Fix: Notification count badge not updating</td>
+            <td>Bug</td>
+            <td><span class="status-dot status-done"></span>Done</td>
+            <td class="priority-high">P1</td>
+            <td><span class="owner-chip">Jordan L.</span></td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">#1410</td>
+            <td>API v2 adapter pattern implementation</td>
+            <td>User Story</td>
+            <td><span class="status-dot status-new"></span>New</td>
+            <td class="priority-med">P2</td>
+            <td><span class="owner-chip">Alex K.</span></td>
+            <td>3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- OKR Progress -->
+    <div class="table-card">
+      <div class="table-header">
+        <h3>🎯 OKR Progress — Q1 2026</h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Key Result</th>
+            <th>Target</th>
+            <th>Current</th>
+            <th>Progress</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ship Notification Center to dogfood</strong></td>
+            <td>March 1</td>
+            <td>MVP live, 3 features remaining</td>
+            <td>
+              <div style="background:var(--border);border-radius:4px;height:8px;width:120px;display:inline-block">
+                <div style="background:var(--warning);border-radius:4px;height:8px;width:75%"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:4px">75%</span>
+            </td>
+            <td><span style="color:var(--warning)">🟡 At Risk</span></td>
+          </tr>
+          <tr>
+            <td><strong>Reduce "missed alert" tickets by 50%</strong></td>
+            <td>&lt; 71/quarter</td>
+            <td>~60/quarter pace</td>
+            <td>
+              <div style="background:var(--border);border-radius:4px;height:8px;width:120px;display:inline-block">
+                <div style="background:var(--success);border-radius:4px;height:8px;width:85%"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:4px">85%</span>
+            </td>
+            <td><span style="color:var(--success)">🟢 On Track</span></td>
+          </tr>
+          <tr>
+            <td><strong>Notification engagement rate &gt; 25%</strong></td>
+            <td>25%</td>
+            <td>22% (dogfood)</td>
+            <td>
+              <div style="background:var(--border);border-radius:4px;height:8px;width:120px;display:inline-block">
+                <div style="background:var(--warning);border-radius:4px;height:8px;width:88%"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:4px">88%</span>
+            </td>
+            <td><span style="color:var(--warning)">🟡 Needs Push</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Generated by <a href="https://github.com/kustonaut/brain-os">Brain OS</a> <code>/dashboard_generator</code> · Sprint 14 · Data as of Feb 27, 2026 08:35 AM
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    }
+  </script>
+</body>
+</html>
