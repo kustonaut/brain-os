@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace">
+  <defs>
+    <linearGradient id="p_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11111b"/>
+      <stop offset="100%" style="stop-color:#181825"/>
+    </linearGradient>
+    <linearGradient id="p_header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="p_active" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee"/>
+      <stop offset="50%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+    <linearGradient id="p_done" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <filter id="p_glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="p_shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <marker id="p_arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#22d3ee"/>
+    </marker>
+    <pattern id="p_grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.4" fill="#313244"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="520" fill="url(#p_bg)" rx="12"/>
+  <rect width="960" height="520" fill="url(#p_grid)" rx="12"/>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="960" height="44" fill="#1e1e2e" rx="12"/>
+  <rect x="0" y="20" width="960" height="24" fill="#1e1e2e"/>
+  <rect x="280" y="8" width="400" height="28" rx="14" fill="url(#p_header)" opacity="0.15"/>
+  <text x="480" y="28" text-anchor="middle" fill="#22d3ee" font-size="14" font-weight="bold">PIPELINE EXECUTION FLOW</text>
+  <text x="940" y="28" text-anchor="end" fill="#45475a" font-size="9">~60 sec total</text>
+
+  <!-- Timeline bar -->
+  <rect x="60" y="64" width="840" height="4" rx="2" fill="#313244"/>
+
+  <!-- Step 0: Cleanup -->
+  <rect x="60" y="56" width="8" height="20" rx="4" fill="url(#p_active)"/>
+  <rect x="40" y="90" width="100" height="110" rx="8" fill="#1e1e2e" stroke="#f97316" stroke-width="1.5" filter="url(#p_shadow)"/>
+  <text x="90" y="110" text-anchor="middle" fill="#f97316" font-size="10" font-weight="bold">STEP 0</text>
+  <text x="90" y="126" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Cleanup</text>
+  <line x1="90" y1="134" x2="90" y2="134" stroke="#45475a"/>
+  <text x="90" y="148" text-anchor="middle" fill="#6c7086" font-size="7.5">Archive signals</text>
+  <text x="90" y="160" text-anchor="middle" fill="#6c7086" font-size="7.5">&gt;14 days old</text>
+  <text x="90" y="174" text-anchor="middle" fill="#6c7086" font-size="7.5">Purge logs</text>
+  <text x="90" y="186" text-anchor="middle" fill="#6c7086" font-size="7.5">&gt;30 days old</text>
+
+  <!-- Step 1: Inbox -->
+  <rect x="170" y="56" width="8" height="20" rx="4" fill="url(#p_active)"/>
+  <rect x="150" y="90" width="100" height="110" rx="8" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5" filter="url(#p_shadow)"/>
+  <text x="200" y="110" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">STEP 1</text>
+  <text x="200" y="126" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Parse Inbox</text>
+  <text x="200" y="148" text-anchor="middle" fill="#6c7086" font-size="7.5">Scan _Inbox/</text>
+  <text x="200" y="160" text-anchor="middle" fill="#6c7086" font-size="7.5">Route by keyword</text>
+  <text x="200" y="174" text-anchor="middle" fill="#6c7086" font-size="7.5">→ project folders</text>
+  <text x="200" y="186" text-anchor="middle" fill="#6c7086" font-size="7.5">Emit parsed signal</text>
+
+  <!-- Step 2: Emails -->
+  <rect x="280" y="56" width="8" height="20" rx="4" fill="url(#p_active)"/>
+  <rect x="260" y="90" width="100" height="110" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.5" filter="url(#p_shadow)"/>
+  <text x="310" y="110" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">STEP 2</text>
+  <text x="310" y="126" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Fetch Emails</text>
+  <text x="310" y="148" text-anchor="middle" fill="#6c7086" font-size="7.5">COM or Graph</text>
+  <text x="310" y="160" text-anchor="middle" fill="#6c7086" font-size="7.5">Last 24h inbox</text>
+  <text x="310" y="174" text-anchor="middle" fill="#6c7086" font-size="7.5">Keyword filter</text>
+  <text x="310" y="186" text-anchor="middle" fill="#6c7086" font-size="7.5">→ emails_*.md</text>
+
+  <!-- Step 3: Chats -->
+  <rect x="390" y="56" width="8" height="20" rx="4" fill="url(#p_active)"/>
+  <rect x="370" y="90" width="100" height="110" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.5" filter="url(#p_shadow)"/>
+  <text x="420" y="110" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">STEP 3</text>
+  <text x="420" y="126" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Fetch Chats</text>
+  <text x="420" y="148" text-anchor="middle" fill="#6c7086" font-size="7.5">Teams Graph API</text>
+  <text x="420" y="160" text-anchor="middle" fill="#6c7086" font-size="7.5">Last 20 chats</text>
+  <text x="420" y="174" text-anchor="middle" fill="#6c7086" font-size="7.5">Extract highlights</text>
+  <text x="420" y="186" text-anchor="middle" fill="#6c7086" font-size="7.5">→ chats_*.md</text>
+
+  <!-- Step 4: ADO -->
+  <rect x="500" y="56" width="8" height="20" rx="4" fill="url(#p_active)"/>
+  <rect x="480" y="90" width="100" height="110" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.5" filter="url(#p_shadow)"/>
+  <text x="530" y="110" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">STEP 4</text>
+  <text x="530" y="126" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Fetch ADO</text>
+  <text x="530" y="148" text-anchor="middle" fill="#6c7086" font-size="7.5">REST API / az cli</text>
+  <text x="530" y="160" text-anchor="middle" fill="#6c7086" font-size="7.5">Tracked work items</text>
+  <text x="530" y="174" text-anchor="middle" fill="#6c7086" font-size="7.5">State changes</text>
+  <text x="530" y="186" text-anchor="middle" fill="#6c7086" font-size="7.5">→ ado_*.md</text>
+
+  <!-- Step 5: Calendar -->
+  <rect x="610" y="56" width="8" height="20" rx="4" fill="url(#p_active)"/>
+  <rect x="590" y="90" width="100" height="110" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.5" filter="url(#p_shadow)"/>
+  <text x="640" y="110" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">STEP 5</text>
+  <text x="640" y="126" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Fetch Calendar</text>
+  <text x="640" y="148" text-anchor="middle" fill="#6c7086" font-size="7.5">COM or Graph</text>
+  <text x="640" y="160" text-anchor="middle" fill="#6c7086" font-size="7.5">Today + tomorrow</text>
+  <text x="640" y="174" text-anchor="middle" fill="#6c7086" font-size="7.5">Free/busy slots</text>
+  <text x="640" y="186" text-anchor="middle" fill="#6c7086" font-size="7.5">→ calendar_*.md</text>
+
+  <!-- Step 6: Brief -->
+  <rect x="720" y="56" width="8" height="20" rx="4" fill="url(#p_active)"/>
+  <rect x="700" y="90" width="110" height="110" rx="8" fill="#1e1e2e" stroke="#fbbf24" stroke-width="2" filter="url(#p_shadow)"/>
+  <text x="755" y="110" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">STEP 6</text>
+  <text x="755" y="126" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Gen Brief</text>
+  <text x="755" y="148" text-anchor="middle" fill="#6c7086" font-size="7.5">AI synthesis</text>
+  <text x="755" y="160" text-anchor="middle" fill="#6c7086" font-size="7.5">All signals + KB</text>
+  <text x="755" y="174" text-anchor="middle" fill="#6c7086" font-size="7.5">Prompt template</text>
+  <text x="755" y="186" text-anchor="middle" fill="#6c7086" font-size="7.5">→ brief_*.md</text>
+
+  <!-- Step 7: Focus Blocks -->
+  <rect x="840" y="56" width="8" height="20" rx="4" fill="url(#p_active)"/>
+  <rect x="820" y="90" width="100" height="110" rx="8" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5" filter="url(#p_shadow)"/>
+  <text x="870" y="110" text-anchor="middle" fill="#34d399" font-size="10" font-weight="bold">STEP 7</text>
+  <text x="870" y="126" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Focus Blocks</text>
+  <text x="870" y="148" text-anchor="middle" fill="#6c7086" font-size="7.5">Find free slots</text>
+  <text x="870" y="160" text-anchor="middle" fill="#6c7086" font-size="7.5">Create calendar</text>
+  <text x="870" y="174" text-anchor="middle" fill="#6c7086" font-size="7.5">focus time events</text>
+  <text x="870" y="186" text-anchor="middle" fill="#6c7086" font-size="7.5">→ Outlook</text>
+
+  <!-- Connector arrows along timeline -->
+  <line x1="68" y1="66" x2="170" y2="66" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#p_arr)"/>
+  <line x1="178" y1="66" x2="280" y2="66" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#p_arr)"/>
+  <line x1="288" y1="66" x2="390" y2="66" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#p_arr)"/>
+  <line x1="398" y1="66" x2="500" y2="66" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#p_arr)"/>
+  <line x1="508" y1="66" x2="610" y2="66" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#p_arr)"/>
+  <line x1="618" y1="66" x2="720" y2="66" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#p_arr)"/>
+  <line x1="728" y1="66" x2="840" y2="66" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#p_arr)"/>
+
+  <!-- === OUTPUT ROWS === -->
+  <!-- Signals output group -->
+  <rect x="40" y="230" width="880" height="52" rx="8" fill="#1e1e2e" stroke="#313244" stroke-width="1" opacity="0.8"/>
+  <text x="60" y="252" fill="#45475a" font-size="9" font-weight="bold">OUTPUT FILES</text>
+  
+  <!-- File badges -->
+  <rect x="160" y="240" width="100" height="22" rx="4" fill="#0891b2" opacity="0.2" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="210" y="255" text-anchor="middle" fill="#22d3ee" font-size="8">emails_*.md</text>
+  
+  <rect x="280" y="240" width="100" height="22" rx="4" fill="#0891b2" opacity="0.2" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="330" y="255" text-anchor="middle" fill="#22d3ee" font-size="8">chats_*.md</text>
+  
+  <rect x="400" y="240" width="80" height="22" rx="4" fill="#0891b2" opacity="0.2" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="440" y="255" text-anchor="middle" fill="#22d3ee" font-size="8">ado_*.md</text>
+  
+  <rect x="500" y="240" width="110" height="22" rx="4" fill="#0891b2" opacity="0.2" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="555" y="255" text-anchor="middle" fill="#22d3ee" font-size="8">calendar_*.md</text>
+  
+  <rect x="630" y="240" width="90" height="22" rx="4" fill="#b45309" opacity="0.2" stroke="#fbbf24" stroke-width="0.8"/>
+  <text x="675" y="255" text-anchor="middle" fill="#fbbf24" font-size="8">brief_*.md</text>
+  
+  <rect x="740" y="240" width="100" height="22" rx="4" fill="#047857" opacity="0.2" stroke="#34d399" stroke-width="0.8"/>
+  <text x="790" y="255" text-anchor="middle" fill="#34d399" font-size="8">focus events</text>
+
+  <!-- Config.json reference -->
+  <rect x="40" y="300" width="880" height="46" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="60" y="320" fill="#6c7086" font-size="9" font-weight="bold">CONFIG DRIVES EVERYTHING</text>
+  <text x="60" y="336" fill="#45475a" font-size="8">config.json → email_keywords[] · ado_tracked_ids[] · calendar_preferences{} · ai_guidance.temperature_by_task{} · signal_mode (com|graph)</text>
+
+  <!-- Error handling -->
+  <rect x="40" y="364" width="880" height="46" rx="8" fill="#1e1e2e" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+  <text x="60" y="384" fill="#ef4444" font-size="9" font-weight="bold">FAIL-SAFE DESIGN</text>
+  <text x="60" y="400" fill="#45475a" font-size="8">Each step is independent. If Step 3 (Chats) fails → Steps 4-7 still run. Missing signals produce empty sections, not crashes. Logs in _Automation/logs/</text>
+
+  <!-- Schedule info -->
+  <rect x="40" y="428" width="880" height="76" rx="8" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="60" y="450" fill="#a78bfa" font-size="9" font-weight="bold">SCHEDULING</text>
+  <text x="60" y="468" fill="#6c7086" font-size="8">Windows Task Scheduler → daily_orchestrator.ps1 @ 08:30 AM</text>
+  <text x="60" y="484" fill="#6c7086" font-size="8">Manual: Ctrl+Shift+B → "Run Daily Pipeline"   |   PowerShell: .\_Automation\daily_orchestrator.ps1 -Force</text>
+  <text x="60" y="500" fill="#6c7086" font-size="8">Dry run: .\_Automation\daily_orchestrator.ps1 -DryRun   |   Signals only: -SkipCalendar flag</text>
+</svg>

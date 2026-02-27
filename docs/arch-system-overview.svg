@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680" font-family="'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e2e"/>
+      <stop offset="100%" style="stop-color:#181825"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="signalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="briefGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="skillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="portalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    <linearGradient id="kbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f472b6"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrowYellow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#fbbf24"/>
+    </marker>
+    <marker id="arrowPink" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f472b6"/>
+    </marker>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="none"/>
+      <circle cx="0" cy="0" r="0.5" fill="#313244"/>
+      <circle cx="20" cy="0" r="0.5" fill="#313244"/>
+      <circle cx="0" cy="20" r="0.5" fill="#313244"/>
+      <circle cx="20" cy="20" r="0.5" fill="#313244"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="680" fill="#11111b" rx="12"/>
+  <rect width="960" height="680" fill="url(#grid)" rx="12"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="960" height="44" fill="url(#headerGrad)" rx="12"/>
+  <rect x="0" y="20" width="960" height="24" fill="url(#headerGrad)"/>
+  <circle cx="20" cy="22" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="22" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="22" r="6" fill="#28c840"/>
+  <text x="480" y="28" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">BRAIN OS — SYSTEM ARCHITECTURE</text>
+
+  <!-- === ROW 1: External Sources === -->
+  <!-- Outlook -->
+  <rect x="40" y="70" width="130" height="64" rx="8" fill="url(#cardGrad)" stroke="#45475a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="105" y="96" text-anchor="middle" fill="#cdd6f4" font-size="11" font-weight="bold">OUTLOOK</text>
+  <text x="105" y="116" text-anchor="middle" fill="#6c7086" font-size="9">COM / Graph API</text>
+
+  <!-- ADO -->
+  <rect x="210" y="70" width="130" height="64" rx="8" fill="url(#cardGrad)" stroke="#45475a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="275" y="96" text-anchor="middle" fill="#cdd6f4" font-size="11" font-weight="bold">AZURE DEVOPS</text>
+  <text x="275" y="116" text-anchor="middle" fill="#6c7086" font-size="9">REST API / az cli</text>
+
+  <!-- Calendar -->
+  <rect x="380" y="70" width="130" height="64" rx="8" fill="url(#cardGrad)" stroke="#45475a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="445" y="96" text-anchor="middle" fill="#cdd6f4" font-size="11" font-weight="bold">CALENDAR</text>
+  <text x="445" y="116" text-anchor="middle" fill="#6c7086" font-size="9">COM / Graph API</text>
+
+  <!-- Teams -->
+  <rect x="550" y="70" width="130" height="64" rx="8" fill="url(#cardGrad)" stroke="#45475a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="615" y="96" text-anchor="middle" fill="#cdd6f4" font-size="11" font-weight="bold">TEAMS CHATS</text>
+  <text x="615" y="116" text-anchor="middle" fill="#6c7086" font-size="9">Graph API</text>
+
+  <!-- _Inbox -->
+  <rect x="720" y="70" width="130" height="64" rx="8" fill="url(#cardGrad)" stroke="#45475a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="785" y="96" text-anchor="middle" fill="#cdd6f4" font-size="11" font-weight="bold">_INBOX/</text>
+  <text x="785" y="116" text-anchor="middle" fill="#6c7086" font-size="9">File drop zone</text>
+
+  <!-- Source label -->
+  <text x="16" y="106" fill="#45475a" font-size="9" transform="rotate(-90,16,106)">SOURCES</text>
+
+  <!-- Arrows from sources down -->
+  <line x1="105" y1="134" x2="105" y2="176" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+  <line x1="275" y1="134" x2="275" y2="176" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+  <line x1="445" y1="134" x2="445" y2="176" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+  <line x1="615" y1="134" x2="615" y2="176" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+  <line x1="785" y1="134" x2="785" y2="176" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+
+  <!-- === ROW 2: Orchestrator === -->
+  <rect x="40" y="180" width="880" height="60" rx="10" fill="url(#cardGrad)" stroke="url(#signalGrad)" stroke-width="2" filter="url(#shadow)"/>
+  <text x="480" y="206" text-anchor="middle" fill="url(#signalGrad)" font-size="13" font-weight="bold" filter="url(#glow)">DAILY ORCHESTRATOR</text>
+  <text x="480" y="226" text-anchor="middle" fill="#6c7086" font-size="10">cleanup → inbox → emails → chats → ADO → calendar → brief → focus_blocks</text>
+
+  <!-- Arrow down from orchestrator -->
+  <line x1="480" y1="240" x2="480" y2="276" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowCyan)"/>
+
+  <!-- === ROW 3: Signals Layer === -->
+  <rect x="80" y="280" width="800" height="70" rx="10" fill="url(#cardGrad)" stroke="#22d3ee" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="302" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="bold">SIGNALS LAYER</text>
+  <!-- Signal files -->
+  <rect x="110" y="310" width="140" height="28" rx="4" fill="#1e1e2e" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="180" y="328" text-anchor="middle" fill="#94a3b8" font-size="9">emails_YYYY-MM-DD.md</text>
+  <rect x="270" y="310" width="140" height="28" rx="4" fill="#1e1e2e" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="340" y="328" text-anchor="middle" fill="#94a3b8" font-size="9">calendar_YYYY-MM-DD.md</text>
+  <rect x="430" y="310" width="120" height="28" rx="4" fill="#1e1e2e" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="490" y="328" text-anchor="middle" fill="#94a3b8" font-size="9">ado_YYYY-MM-DD.md</text>
+  <rect x="570" y="310" width="130" height="28" rx="4" fill="#1e1e2e" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="635" y="328" text-anchor="middle" fill="#94a3b8" font-size="9">chats_YYYY-MM-DD.md</text>
+  <rect x="720" y="310" width="140" height="28" rx="4" fill="#1e1e2e" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="790" y="328" text-anchor="middle" fill="#94a3b8" font-size="9">inbox_parsed_*.md</text>
+
+  <!-- Arrow down from signals -->
+  <line x1="480" y1="350" x2="480" y2="386" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowYellow)"/>
+
+  <!-- === ROW 4: AI Synthesis === -->
+  <rect x="280" y="390" width="400" height="60" rx="10" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="2" filter="url(#shadow)"/>
+  <text x="480" y="416" text-anchor="middle" fill="url(#briefGrad)" font-size="13" font-weight="bold" filter="url(#glow)">AI BRIEF GENERATOR</text>
+  <text x="480" y="434" text-anchor="middle" fill="#6c7086" font-size="10">Copilot synthesizes signals → priorities + meeting prep + actions</text>
+
+  <!-- Knowledge Base arrow into AI -->
+  <rect x="40" y="390" width="200" height="60" rx="10" fill="url(#cardGrad)" stroke="#f472b6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="140" y="414" text-anchor="middle" fill="url(#kbGrad)" font-size="11" font-weight="bold">KNOWLEDGE BASE</text>
+  <text x="140" y="432" text-anchor="middle" fill="#6c7086" font-size="9">Goals · Contacts · Processes</text>
+  <line x1="240" y1="420" x2="276" y2="420" stroke="#f472b6" stroke-width="1.5" marker-end="url(#arrowPink)"/>
+
+  <!-- Prompt Templates arrow into AI -->
+  <rect x="720" y="390" width="200" height="60" rx="10" fill="url(#cardGrad)" stroke="#f472b6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="820" y="414" text-anchor="middle" fill="url(#kbGrad)" font-size="11" font-weight="bold">PROMPT TEMPLATES</text>
+  <text x="820" y="432" text-anchor="middle" fill="#6c7086" font-size="9">daily_brief.md · status.md</text>
+  <line x1="720" y1="420" x2="684" y2="420" stroke="#f472b6" stroke-width="1.5" marker-end="url(#arrowPink)"/>
+
+  <!-- Arrows down from AI -->
+  <line x1="380" y1="450" x2="240" y2="506" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowYellow)"/>
+  <line x1="480" y1="450" x2="480" y2="506" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowYellow)"/>
+  <line x1="580" y1="450" x2="720" y2="506" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowYellow)"/>
+
+  <!-- === ROW 5: Outputs === -->
+  <!-- Daily Brief -->
+  <rect x="80" y="510" width="260" height="70" rx="10" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="210" y="536" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">DAILY BRIEF</text>
+  <text x="210" y="556" text-anchor="middle" fill="#6c7086" font-size="9">brief_YYYY-MM-DD.md</text>
+  <text x="210" y="570" text-anchor="middle" fill="#6c7086" font-size="9">Priorities · Prep · Actions</text>
+
+  <!-- Web Portal -->
+  <rect x="370" y="510" width="220" height="70" rx="10" fill="url(#cardGrad)" stroke="#34d399" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="536" text-anchor="middle" fill="url(#portalGrad)" font-size="12" font-weight="bold">WEB PORTAL</text>
+  <text x="480" y="556" text-anchor="middle" fill="#6c7086" font-size="9">localhost:8765</text>
+  <text x="480" y="570" text-anchor="middle" fill="#6c7086" font-size="9">Dashboard · Brief · Projects · Search</text>
+
+  <!-- Copilot Skills -->
+  <rect x="620" y="510" width="260" height="70" rx="10" fill="url(#cardGrad)" stroke="#a78bfa" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="750" y="536" text-anchor="middle" fill="url(#skillGrad)" font-size="12" font-weight="bold">COPILOT SKILLS (17)</text>
+  <text x="750" y="556" text-anchor="middle" fill="#6c7086" font-size="9">/eod  /capture  /email  /meeting_prep</text>
+  <text x="750" y="570" text-anchor="middle" fill="#6c7086" font-size="9">/ado_reporter  /doc_generator  ...</text>
+
+  <!-- === ROW 6: User === -->
+  <line x1="210" y1="580" x2="480" y2="624" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+  <line x1="480" y1="580" x2="480" y2="624" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="580" x2="480" y2="624" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="628" width="220" height="40" rx="20" fill="url(#headerGrad)" filter="url(#shadow)"/>
+  <text x="480" y="653" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">YOU — THE PM</text>
+
+  <!-- Legend -->
+  <rect x="30" y="630" width="180" height="42" rx="6" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="40" y="646" fill="#6c7086" font-size="8">Data flow</text>
+  <line x1="90" y1="643" x2="130" y2="643" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="40" y="662" fill="#6c7086" font-size="8">Context injection</text>
+  <line x1="110" y1="659" x2="140" y2="659" stroke="#f472b6" stroke-width="1.5"/>
+</svg>

@@ -4,6 +4,13 @@
 
 ## System Overview
 
+<p align="center">
+  <img src="arch-system-overview.svg" alt="System Overview" width="960" />
+</p>
+
+<details>
+<summary>ASCII fallback</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                     BRAIN OS ARCHITECTURE                    │
@@ -45,9 +52,15 @@
 └─────────────────────────────────────────────────────────────┘
 ```
 
+</details>
+
 ## Data Flow
 
 ### Morning Pipeline (Automated, ~60 seconds)
+
+<p align="center">
+  <img src="arch-pipeline-flow.svg" alt="Pipeline Flow" width="960" />
+</p>
 
 ```
 1. cleanup.ps1       → Archive old signals (>14d), briefs (>30d), logs (>30d)
@@ -147,6 +160,10 @@ The portal (`serve_artifacts.py`) provides:
 
 ### Skills System
 
+<p align="center">
+  <img src="arch-skills-binding.svg" alt="Skills Binding" width="960" />
+</p>
+
 Skills are markdown files in `.vscode/skills/` that teach GitHub Copilot domain-specific behaviors. Each skill defines:
 - **Trigger** — How to invoke (`/skill_name`)
 - **Actions** — Available commands within the skill
@@ -171,6 +188,14 @@ These files provide persistent context that Copilot reads to give informed respo
 | `Trust_Boundaries.md` | What automation can/can't do | When adding features |
 | `Agent_Build_Checklist.md` | Pre-mortem for new automation | When building |
 | `Agent_Failure_Playbook.md` | Debugging taxonomy | When troubleshooting |
+
+## Artifact Generation
+
+<p align="center">
+  <img src="arch-artifact-generation.svg" alt="Artifact Generation" width="960" />
+</p>
+
+Every artifact in Brain OS is produced by one of three trigger types: **automated** (daily pipeline), **manual** (Copilot skill invocation), or **drop zone** (file added to `_Inbox/`). Artifacts follow a lifecycle — created → active (14 days) → archived (14–30 days) → purged. Knowledge Base files and project documents are permanent and never auto-deleted.
 
 ## Security Model
 

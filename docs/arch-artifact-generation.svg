@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace">
+  <defs>
+    <linearGradient id="a_header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    <filter id="a_shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="a_glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="a_arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"/>
+    </marker>
+    <marker id="a_arr_y" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#fbbf24"/>
+    </marker>
+    <marker id="a_arr_g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#34d399"/>
+    </marker>
+    <marker id="a_arr_p" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#a78bfa"/>
+    </marker>
+    <pattern id="a_grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.4" fill="#313244"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="600" fill="#11111b" rx="12"/>
+  <rect width="960" height="600" fill="url(#a_grid)" rx="12"/>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="960" height="44" fill="#1e1e2e" rx="12"/>
+  <rect x="0" y="20" width="960" height="24" fill="#1e1e2e"/>
+  <text x="480" y="28" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold">ARTIFACT GENERATION — WHAT GETS CREATED AND WHEN</text>
+
+  <!-- === LEFT COLUMN: Triggers === -->
+  <text x="60" y="76" fill="#6c7086" font-size="10" font-weight="bold">TRIGGERS</text>
+
+  <!-- Auto trigger -->
+  <rect x="30" y="90" width="200" height="56" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.5" filter="url(#a_shadow)"/>
+  <circle cx="52" cy="118" r="8" fill="#0891b2" opacity="0.3" stroke="#22d3ee" stroke-width="1"/>
+  <text x="52" y="122" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">A</text>
+  <text x="68" y="112" fill="#22d3ee" font-size="9" font-weight="bold">AUTOMATED</text>
+  <text x="68" y="128" fill="#6c7086" font-size="7.5">Daily @ 08:30 via Task Scheduler</text>
+
+  <!-- Manual trigger -->
+  <rect x="30" y="160" width="200" height="56" rx="8" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5" filter="url(#a_shadow)"/>
+  <circle cx="52" cy="188" r="8" fill="#7c3aed" opacity="0.3" stroke="#a78bfa" stroke-width="1"/>
+  <text x="52" y="192" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">M</text>
+  <text x="68" y="182" fill="#a78bfa" font-size="9" font-weight="bold">MANUAL / SKILL</text>
+  <text x="68" y="198" fill="#6c7086" font-size="7.5">User invokes via Copilot chat</text>
+
+  <!-- On-demand trigger -->
+  <rect x="30" y="230" width="200" height="56" rx="8" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5" filter="url(#a_shadow)"/>
+  <circle cx="52" cy="258" r="8" fill="#059669" opacity="0.3" stroke="#34d399" stroke-width="1"/>
+  <text x="52" y="262" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">D</text>
+  <text x="68" y="252" fill="#34d399" font-size="9" font-weight="bold">DROP ZONE</text>
+  <text x="68" y="268" fill="#6c7086" font-size="7.5">File added to _Inbox/</text>
+
+  <!-- === CENTER: Processing === -->
+  <text x="310" y="76" fill="#6c7086" font-size="10" font-weight="bold">PROCESSING</text>
+
+  <!-- Pipeline processor -->
+  <rect x="270" y="90" width="180" height="196" rx="10" fill="#1e1e2e" stroke="#45475a" stroke-width="1" filter="url(#a_shadow)"/>
+  <text x="360" y="114" text-anchor="middle" fill="#cdd6f4" font-size="10" font-weight="bold">PROCESSORS</text>
+  <line x1="290" y1="122" x2="430" y2="122" stroke="#313244" stroke-width="0.5"/>
+
+  <rect x="285" y="132" width="160" height="24" rx="4" fill="#1e1e2e" stroke="#22d3ee" stroke-width="0.8"/>
+  <text x="295" y="148" fill="#22d3ee" font-size="8">fetch_*.ps1</text>
+  <text x="430" y="148" text-anchor="end" fill="#45475a" font-size="7">signals</text>
+
+  <rect x="285" y="164" width="160" height="24" rx="4" fill="#1e1e2e" stroke="#fbbf24" stroke-width="0.8"/>
+  <text x="295" y="180" fill="#fbbf24" font-size="8">generate_brief.ps1</text>
+  <text x="430" y="180" text-anchor="end" fill="#45475a" font-size="7">AI synth</text>
+
+  <rect x="285" y="196" width="160" height="24" rx="4" fill="#1e1e2e" stroke="#a78bfa" stroke-width="0.8"/>
+  <text x="295" y="212" fill="#a78bfa" font-size="8">Copilot Skills</text>
+  <text x="430" y="212" text-anchor="end" fill="#45475a" font-size="7">on demand</text>
+
+  <rect x="285" y="228" width="160" height="24" rx="4" fill="#1e1e2e" stroke="#34d399" stroke-width="0.8"/>
+  <text x="295" y="244" fill="#34d399" font-size="8">parse_inbox.ps1</text>
+  <text x="430" y="244" text-anchor="end" fill="#45475a" font-size="7">routing</text>
+
+  <rect x="285" y="260" width="160" height="18" rx="4" fill="#1e1e2e" stroke="#f97316" stroke-width="0.8"/>
+  <text x="295" y="273" fill="#f97316" font-size="8">serve_artifacts.py</text>
+
+  <!-- Trigger arrows -->
+  <line x1="230" y1="118" x2="266" y2="140" stroke="#22d3ee" stroke-width="1" marker-end="url(#a_arr)"/>
+  <line x1="230" y1="188" x2="266" y2="210" stroke="#a78bfa" stroke-width="1" marker-end="url(#a_arr)"/>
+  <line x1="230" y1="258" x2="266" y2="248" stroke="#34d399" stroke-width="1" marker-end="url(#a_arr)"/>
+
+  <!-- === RIGHT COLUMN: Artifacts === -->
+  <text x="530" y="76" fill="#fbbf24" font-size="10" font-weight="bold">ARTIFACTS GENERATED</text>
+
+  <!-- Signal files -->
+  <rect x="510" y="90" width="420" height="52" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1" filter="url(#a_shadow)"/>
+  <circle cx="530" cy="116" r="6" fill="#22d3ee" opacity="0.4"/>
+  <text x="530" y="120" text-anchor="middle" fill="#22d3ee" font-size="6" font-weight="bold">A</text>
+  <text x="546" y="110" fill="#22d3ee" font-size="9" font-weight="bold">Signal Files (4 daily)</text>
+  <text x="546" y="126" fill="#6c7086" font-size="7.5">emails_*.md · calendar_*.md · ado_*.md · chats_*.md</text>
+  <text x="546" y="138" fill="#45475a" font-size="7">Location: 00_Daily_Intelligence/Signals/</text>
+
+  <!-- Daily Brief -->
+  <rect x="510" y="156" width="420" height="52" rx="8" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5" filter="url(#a_shadow)"/>
+  <circle cx="530" cy="182" r="6" fill="#fbbf24" opacity="0.4"/>
+  <text x="530" y="186" text-anchor="middle" fill="#fbbf24" font-size="6" font-weight="bold">A</text>
+  <text x="546" y="176" fill="#fbbf24" font-size="9" font-weight="bold">Daily Brief (1 daily)</text>
+  <text x="546" y="192" fill="#6c7086" font-size="7.5">AI-synthesized priorities, meeting prep, action items, stale alerts</text>
+  <text x="546" y="204" fill="#45475a" font-size="7">Location: 00_Daily_Intelligence/Daily_Briefs/brief_YYYY-MM-DD.md</text>
+
+  <!-- Focus Time Events -->
+  <rect x="510" y="222" width="420" height="42" rx="8" fill="#1e1e2e" stroke="#34d399" stroke-width="1" filter="url(#a_shadow)"/>
+  <circle cx="530" cy="243" r="6" fill="#34d399" opacity="0.4"/>
+  <text x="530" y="247" text-anchor="middle" fill="#34d399" font-size="6" font-weight="bold">A</text>
+  <text x="546" y="240" fill="#34d399" font-size="9" font-weight="bold">Focus Time Events</text>
+  <text x="546" y="256" fill="#6c7086" font-size="7.5">Calendar events auto-created in free slots → Outlook</text>
+
+  <!-- KB Updates -->
+  <rect x="510" y="278" width="420" height="52" rx="8" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1" filter="url(#a_shadow)"/>
+  <circle cx="530" cy="304" r="6" fill="#a78bfa" opacity="0.4"/>
+  <text x="530" y="308" text-anchor="middle" fill="#a78bfa" font-size="6" font-weight="bold">M</text>
+  <text x="546" y="296" fill="#a78bfa" font-size="9" font-weight="bold">Knowledge Base Updates</text>
+  <text x="546" y="312" fill="#6c7086" font-size="7.5">/capture → Action_Items.md · Key_Contacts.md · charter folders</text>
+  <text x="546" y="324" fill="#45475a" font-size="7">/eod → Goals.md · Daily_Logs/ · stale item flags</text>
+
+  <!-- Office Documents -->
+  <rect x="510" y="344" width="420" height="52" rx="8" fill="#1e1e2e" stroke="#f472b6" stroke-width="1" filter="url(#a_shadow)"/>
+  <circle cx="530" cy="370" r="6" fill="#f472b6" opacity="0.4"/>
+  <text x="530" y="374" text-anchor="middle" fill="#f472b6" font-size="6" font-weight="bold">M</text>
+  <text x="546" y="362" fill="#f472b6" font-size="9" font-weight="bold">Office Documents</text>
+  <text x="546" y="378" fill="#6c7086" font-size="7.5">/m365_doc_generator → .docx status reports · .pptx decks · .xlsx trackers</text>
+  <text x="546" y="392" fill="#45475a" font-size="7">/m365_email_drafter → Outlook drafts · sent mail</text>
+
+  <!-- Spec Docs -->
+  <rect x="510" y="410" width="420" height="42" rx="8" fill="#1e1e2e" stroke="#f97316" stroke-width="1" filter="url(#a_shadow)"/>
+  <circle cx="530" cy="431" r="6" fill="#f97316" opacity="0.4"/>
+  <text x="530" y="435" text-anchor="middle" fill="#f97316" font-size="6" font-weight="bold">M</text>
+  <text x="546" y="428" fill="#f97316" font-size="9" font-weight="bold">Feature Specs / PRDs</text>
+  <text x="546" y="444" fill="#6c7086" font-size="7.5">/insights_to_spec → structured spec using prd_template.md</text>
+
+  <!-- Web Portal -->
+  <rect x="510" y="466" width="420" height="42" rx="8" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5" filter="url(#a_shadow)"/>
+  <circle cx="530" cy="487" r="6" fill="#34d399" opacity="0.4"/>
+  <text x="530" y="491" text-anchor="middle" fill="#34d399" font-size="6" font-weight="bold">D</text>
+  <text x="546" y="484" fill="#34d399" font-size="9" font-weight="bold">Web Portal (localhost:8765)</text>
+  <text x="546" y="500" fill="#6c7086" font-size="7.5">Live dashboard rendering all artifacts in Fluent 2 UI</text>
+
+  <!-- Arrows from processors to artifacts -->
+  <line x1="450" y1="144" x2="506" y2="116" stroke="#22d3ee" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#a_arr)"/>
+  <line x1="450" y1="176" x2="506" y2="182" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#a_arr_y)"/>
+  <line x1="450" y1="212" x2="506" y2="304" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#a_arr_p)"/>
+  <line x1="450" y1="248" x2="506" y2="243" stroke="#34d399" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#a_arr_g)"/>
+
+  <!-- === BOTTOM: Data Lifecycle === -->
+  <rect x="30" y="524" width="900" height="64" rx="10" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="60" y="548" fill="#f97316" font-size="10" font-weight="bold">ARTIFACT LIFECYCLE</text>
+  <line x1="60" y1="556" x2="910" y2="556" stroke="#313244" stroke-width="0.5"/>
+
+  <!-- Lifecycle stages -->
+  <rect x="60" y="564" width="100" height="16" rx="3" fill="#22d3ee" opacity="0.15" stroke="#22d3ee" stroke-width="0.5"/>
+  <text x="110" y="576" text-anchor="middle" fill="#22d3ee" font-size="7.5" font-weight="bold">CREATED</text>
+  <text x="168" y="576" fill="#45475a" font-size="8">→</text>
+
+  <rect x="180" y="564" width="120" height="16" rx="3" fill="#fbbf24" opacity="0.15" stroke="#fbbf24" stroke-width="0.5"/>
+  <text x="240" y="576" text-anchor="middle" fill="#fbbf24" font-size="7.5" font-weight="bold">ACTIVE (14d)</text>
+  <text x="308" y="576" fill="#45475a" font-size="8">→</text>
+
+  <rect x="320" y="564" width="140" height="16" rx="3" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="0.5"/>
+  <text x="390" y="576" text-anchor="middle" fill="#f97316" font-size="7.5" font-weight="bold">ARCHIVED (14-30d)</text>
+  <text x="468" y="576" fill="#45475a" font-size="8">→</text>
+
+  <rect x="480" y="564" width="100" height="16" rx="3" fill="#ef4444" opacity="0.15" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="530" y="576" text-anchor="middle" fill="#ef4444" font-size="7.5" font-weight="bold">PURGED</text>
+
+  <text x="620" y="576" fill="#45475a" font-size="7.5">KB files + project docs → permanent (never auto-deleted)</text>
+
+  <!-- Legend -->
+  <rect x="770" y="314" width="160" height="68" rx="6" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="785" y="332" fill="#6c7086" font-size="8" font-weight="bold">TRIGGER KEY</text>
+  <circle cx="790" cy="346" r="5" fill="#22d3ee" opacity="0.4"/>
+  <text x="790" y="350" text-anchor="middle" fill="#22d3ee" font-size="5" font-weight="bold">A</text>
+  <text x="802" y="350" fill="#6c7086" font-size="7.5">= Automated (daily)</text>
+  <circle cx="790" cy="362" r="5" fill="#a78bfa" opacity="0.4"/>
+  <text x="790" y="366" text-anchor="middle" fill="#a78bfa" font-size="5" font-weight="bold">M</text>
+  <text x="802" y="366" fill="#6c7086" font-size="7.5">= Manual (skill)</text>
+  <circle cx="790" cy="378" r="5" fill="#34d399" opacity="0.4"/>
+  <text x="790" y="382" text-anchor="middle" fill="#34d399" font-size="5" font-weight="bold">D</text>
+  <text x="802" y="382" fill="#6c7086" font-size="7.5">= Drop zone / on demand</text>
+</svg>
