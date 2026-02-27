@@ -145,7 +145,7 @@ Skills are markdown instruction files that turn GitHub Copilot into a domain-spe
 
 </details>
 
-> **See example outputs →** [`docs/demos/`](docs/demos/)
+> **See example outputs →** [`docs/demos/`](docs/demos/) ·  **[Live Demo Gallery](https://kustonaut.github.io/brain-os/)**
 
 ---
 
@@ -166,27 +166,27 @@ Open these directly in your browser — no setup required. All content uses fict
 <table>
 <tr>
 <td align="center" width="20%">
-  <a href="docs/demos/demo_dashboard_sprint_health.html"><strong>Sprint Dashboard</strong></a><br/>
+  <a href="https://kustonaut.github.io/brain-os/demos/demo_dashboard_sprint_health.html"><strong>Sprint Dashboard</strong></a><br/>
   <sub>Interactive HTML with KPIs, burndown, risk heatmap, dark/light toggle</sub><br/>
   <sub><code>/dashboard_generator</code></sub>
 </td>
 <td align="center" width="20%">
-  <a href="docs/demos/demo_command_center.html"><strong>Command Center</strong></a><br/>
+  <a href="https://kustonaut.github.io/brain-os/demos/demo_command_center.html"><strong>Command Center</strong></a><br/>
   <sub>Static demo of the localhost:8765 portal with full layout</sub><br/>
   <sub><code>Portal</code></sub>
 </td>
 <td align="center" width="20%">
-  <a href="docs/demos/demo_prd_notification_center.md"><strong>PRD: Notifications</strong></a><br/>
+  <a href="https://kustonaut.github.io/brain-os/demos/demo_prd_notification_center.html"><strong>PRD: Notifications</strong></a><br/>
   <sub>Full PRD with problem, metrics, acceptance criteria, risks</sub><br/>
   <sub><code>/prd_writer</code></sub>
 </td>
 <td align="center" width="20%">
-  <a href="docs/demos/demo_mom_sprint_planning.md"><strong>MOM: Sprint Plan</strong></a><br/>
+  <a href="https://kustonaut.github.io/brain-os/demos/demo_mom_sprint_planning.html"><strong>MOM: Sprint Plan</strong></a><br/>
   <sub>Minutes with decisions table, AIs, parking lot</sub><br/>
   <sub><code>/mom</code></sub>
 </td>
 <td align="center" width="20%">
-  <a href="docs/demos/demo_daily_brief.md"><strong>Daily Brief</strong></a><br/>
+  <a href="https://kustonaut.github.io/brain-os/demos/demo_daily_brief.html"><strong>Daily Brief</strong></a><br/>
   <sub>AI-generated intelligence with priorities, OKRs, focus blocks</sub><br/>
   <sub><code>Pipeline</code></sub>
 </td>
