@@ -1,0 +1,62 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Daily Pipeline",
+      "type": "shell",
+      "command": "& \"${workspaceFolder}\\_Automation\\daily_orchestrator.ps1\" -Force",
+      "group": "build",
+      "detail": "Run the full daily orchestrator (cleanup → inbox → email → chats → ADO → calendar → brief)"
+    },
+    {
+      "label": "Dry Run Pipeline",
+      "type": "shell",
+      "command": "& \"${workspaceFolder}\\_Automation\\daily_orchestrator.ps1\" -DryRun -Force",
+      "group": "test",
+      "detail": "Preview pipeline execution without making changes"
+    },
+    {
+      "label": "Launch Portal",
+      "type": "shell",
+      "command": "& \"${workspaceFolder}\\.venv\\Scripts\\python.exe\" \"${workspaceFolder}\\_Automation\\serve_artifacts.py\"",
+      "group": "none",
+      "isBackground": true,
+      "detail": "Start the Brain OS dashboard on http://localhost:8765"
+    },
+    {
+      "label": "Open Daily Brief (Web)",
+      "type": "shell",
+      "command": "Start-Process 'http://localhost:8765/brief'",
+      "group": "none",
+      "detail": "Open today's daily brief in the portal browser"
+    },
+    {
+      "label": "Fetch Signals Only",
+      "type": "shell",
+      "command": "& \"${workspaceFolder}\\_Automation\\daily_orchestrator.ps1\" -Force -SkipCalendar",
+      "group": "none",
+      "detail": "Run pipeline but skip calendar blocking (signals + brief only)"
+    },
+    {
+      "label": "Run Cleanup",
+      "type": "shell",
+      "command": "& \"${workspaceFolder}\\_Automation\\cleanup.ps1\"",
+      "group": "none",
+      "detail": "Archive old signals (>14d), briefs (>30d), delete old logs (>30d)"
+    },
+    {
+      "label": "Weekly Snapshot",
+      "type": "shell",
+      "command": "& \"${workspaceFolder}\\_Automation\\weekly_snapshot.ps1\"",
+      "group": "none",
+      "detail": "Generate weekly aggregation of all signals into Weekly_Snapshots/"
+    },
+    {
+      "label": "Sync Instructions",
+      "type": "shell",
+      "command": "& \"${workspaceFolder}\\_Automation\\sync_instructions.ps1\"",
+      "group": "none",
+      "detail": "Regenerate copilot-instructions.md folder map from actual disk structure"
+    }
+  ]
+}

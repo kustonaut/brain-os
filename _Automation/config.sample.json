@@ -1,0 +1,149 @@
+{
+  "pm_identity": {
+    "name": "Your Name",
+    "email": "you@company.com",
+    "team": "Your Team Name",
+    "org": "Your Organization",
+    "role": "Program Manager",
+    "location": "Your City"
+  },
+
+  "projects": [
+    {
+      "name": "Project Alpha",
+      "slug": "alpha",
+      "folder": "projects/project-alpha",
+      "description": "Core platform features and reliability",
+      "status": "🟢 Active",
+      "team": "Engineering Team A",
+      "color": "#0078D4",
+      "icon": "code",
+      "metrics": [
+        ["Open Bugs", "42", "<30", "y"],
+        ["Sprint Velocity", "28", "30", "g"],
+        ["Customer DSAT", "3.2%", "<2%", "r"]
+      ],
+      "keywords": ["alpha", "platform", "core-api"]
+    },
+    {
+      "name": "Project Beta",
+      "slug": "beta",
+      "folder": "projects/project-beta",
+      "description": "Partner integrations and ecosystem",
+      "status": "🟡 In Progress",
+      "team": "Engineering Team B",
+      "color": "#107C10",
+      "icon": "people",
+      "metrics": [
+        ["Partner APIs", "5", "8", "y"],
+        ["Integration Tests", "92%", "95%", "g"]
+      ],
+      "keywords": ["beta", "partner", "integration"]
+    },
+    {
+      "name": "Project Gamma",
+      "slug": "gamma",
+      "folder": "projects/project-gamma",
+      "description": "Developer experience and documentation",
+      "status": "🟢 Active",
+      "team": "DevEx Team",
+      "color": "#8661C5",
+      "icon": "document",
+      "metrics": [],
+      "keywords": ["gamma", "devex", "docs", "SDK"]
+    }
+  ],
+
+  "charter_patterns": [
+    {
+      "name": "Project Alpha",
+      "folder": "projects/project-alpha",
+      "keywords": ["alpha", "platform", "core-api", "reliability", "perf"]
+    },
+    {
+      "name": "Project Beta",
+      "folder": "projects/project-beta",
+      "keywords": ["beta", "partner", "integration", "ecosystem"]
+    },
+    {
+      "name": "Project Gamma",
+      "folder": "projects/project-gamma",
+      "keywords": ["gamma", "devex", "documentation", "SDK"]
+    }
+  ],
+
+  "team_members": [
+    "Your Name",
+    "Teammate 1",
+    "Teammate 2",
+    "Teammate 3"
+  ],
+
+  "ado": {
+    "organization": "https://dev.azure.com/YOUR_ORG",
+    "project": "YOUR_PROJECT",
+    "tracked_ids": [12345, 12346, 12347],
+    "area_path": "YOUR_PROJECT\\YOUR_AREA",
+    "assigned_to": "Your Name <you@company.com>"
+  },
+
+  "outlook": {
+    "keywords_filter": [
+      "project-alpha", "project-beta", "project-gamma",
+      "bug", "escalation", "release", "partner",
+      "action required", "urgent", "blocked"
+    ],
+    "excluded_folders": ["Junk Email", "Deleted Items", "Archive"],
+    "lookback_hours": 24,
+    "max_items": 50
+  },
+
+  "inbox": {
+    "routing_keywords": {
+      "projects/project-alpha": ["alpha", "platform", "core"],
+      "projects/project-beta": ["beta", "partner", "integration"],
+      "projects/project-gamma": ["gamma", "devex", "SDK"]
+    }
+  },
+
+  "calendar": {
+    "focus_block_enabled": true,
+    "focus_block_duration_minutes": 60,
+    "focus_block_category": "Focus Time",
+    "focus_block_max_per_day": 2,
+    "working_hours_start": "09:00",
+    "working_hours_end": "18:00",
+    "exclude_patterns": ["Lunch", "Break", "OOF"]
+  },
+
+  "graph_api": {
+    "client_id": "",
+    "tenant_id": "",
+    "note": "Leave empty to use az CLI authentication (recommended)"
+  },
+
+  "ai_guidance": {
+    "temperature_by_task": {
+      "daily_brief": 0.1,
+      "data_extraction": 0.0,
+      "meeting_prep": 0.2,
+      "email_draft": 0.5,
+      "status_update": 0.3,
+      "creative_writing": 0.8,
+      "brainstorming": 0.9
+    },
+    "model_routing": {
+      "fast_cheap": "Simple parse, format, classify tasks",
+      "balanced": "Email drafts, briefs, meeting prep",
+      "deep_reasoning": "Architecture decisions, root cause analysis, spec writing"
+    },
+    "cot_preamble": "Think step by step. What is the PM most likely missing?",
+    "step_back_preamble": "Before answering, ask: What general principle applies here? What would a senior PM advise?"
+  },
+
+  "branding": {
+    "portal_name": "Brain",
+    "portal_subtitle": "Your daily intelligence system.",
+    "portal_port": 8765
+  }
+}

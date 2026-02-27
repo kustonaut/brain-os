@@ -1,0 +1,44 @@
+# Dependencies
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Config (contains personal identity — never commit)
+_Automation/config.json
+
+# Generated signals (personal data)
+00_Daily_Intelligence/Signals/*.md
+00_Daily_Intelligence/Daily_Briefs/*.md
+00_Daily_Intelligence/Daily_Logs/*.md
+00_Daily_Intelligence/Meeting_Prep/*.md
+00_Daily_Intelligence/Weekly_Snapshots/*.md
+00_Daily_Intelligence/Reports/*.md
+
+# Inbox (may contain sensitive files)
+_Inbox/*
+!_Inbox/README.md
+
+# Logs
+_Automation/logs/
+
+# Cache
+_Automation/gh_cache/
+_Automation/__pycache__/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Office temp files
+~$*.docx
+~$*.pptx
+~$*.xlsx
+
+# Recordings & Transcripts (large binary files)
+**/Recordings/
+**/Transcripts/
+
+# Archives
+08_Archive/
