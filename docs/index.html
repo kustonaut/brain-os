@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain OS — Demo Gallery</title>
+<style>
+:root {
+  --bg: #11111b;
+  --surface: #1e1e2e;
+  --border: #313244;
+  --text: #cdd6f4;
+  --muted: #6c7086;
+  --dimmed: #45475a;
+  --cyan: #22d3ee;
+  --yellow: #fbbf24;
+  --green: #34d399;
+  --red: #f87171;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+  --blue: #60a5fa;
+  --indigo: #6366f1;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #1e1e2e 0%, #181825 50%, #11111b 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 64px 24px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(99,102,241,0.08) 0%, transparent 60%),
+              radial-gradient(circle at 70% 50%, rgba(34,211,238,0.06) 0%, transparent 60%);
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--indigo), var(--purple));
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(99,102,241,0.3);
+}
+.hero-icon svg { width: 40px; height: 40px; }
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--text) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto 24px;
+}
+.hero-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-links a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.hero-links a:hover {
+  background: rgba(34,211,238,0.1);
+  border-color: var(--cyan);
+}
+
+/* Stats bar */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--cyan);
+}
+.stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+/* Demo grid */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+.section-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.card-accent {
+  height: 3px;
+}
+.card-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+  flex: 1;
+  margin-bottom: 16px;
+}
+.card-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  color: var(--muted);
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+}
+.card-type {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  background: rgba(0,0,0,0.15);
+}
+.card-type .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Info section */
+.info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 48px;
+}
+.info h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.info p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.info a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+.info a:hover { text-decoration: underline; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 32px 24px 48px;
+  border-top: 1px solid var(--border);
+}
+.footer-logo {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, var(--indigo), var(--purple));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-logo svg { width: 22px; height: 22px; }
+.footer p {
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.footer a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+.footer a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 28px; }
+  .stats { gap: 16px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+        <path d="M12 6c-2.5 0-4.5 1.5-4.5 4 0 1.5.7 2.5 1.5 3.2V15c0 .5.5 1 1 1h4c.5 0 1-.5 1-1v-1.8c.8-.7 1.5-1.7 1.5-3.2 0-2.5-2-4-4.5-4z"/>
+        <path d="M10 18h4M11 21h2"/>
+        <circle cx="9" cy="10" r="0.5" fill="white"/>
+        <circle cx="15" cy="10" r="0.5" fill="white"/>
+      </svg>
+    </div>
+    <h1>Brain OS — Demo Gallery</h1>
+    <p>Example outputs from the AI-powered PM operating system. All content uses fictional data.</p>
+    <div class="hero-links">
+      <a href="https://github.com/kustonaut/brain-os">⭐ GitHub</a>
+      <a href="https://github.com/kustonaut/brain-os/blob/main/README.md">📖 Docs</a>
+      <a href="https://github.com/kustonaut/brain-os/blob/main/docs/ARCHITECTURE.md">🏗️ Architecture</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">22</div><div class="stat-label">Copilot Skills</div></div>
+      <div class="stat"><div class="stat-num">10</div><div class="stat-label">Pipeline Steps</div></div>
+      <div class="stat"><div class="stat-num">9</div><div class="stat-label">KB Files</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Signal Sources</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">Interactive Dashboards</div>
+  <div class="grid">
+    <a href="demos/demo_dashboard_sprint_health.html" class="card">
+      <div class="card-accent" style="background: linear-gradient(90deg, var(--cyan), var(--blue));"></div>
+      <div class="card-body">
+        <span class="card-badge" style="background: rgba(34,211,238,0.15); color: var(--cyan);">Interactive</span>
+        <h3>Sprint Health Dashboard</h3>
+        <p>Real-time sprint analytics with KPI cards, burndown chart, risk heatmap, and velocity tracking. Full dark/light theme toggle.</p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">Chart.js</span>
+          <span class="tag">Dark/Light</span>
+        </div>
+      </div>
+      <div class="card-type">
+        <span class="dot" style="background: var(--cyan);"></span>
+        Generated by <code>/dashboard_generator</code>
+      </div>
+    </a>
+
+    <a href="demos/demo_command_center.html" class="card">
+      <div class="card-accent" style="background: linear-gradient(90deg, var(--green), var(--cyan));"></div>
+      <div class="card-body">
+        <span class="card-badge" style="background: rgba(52,211,153,0.15); color: var(--green);">Portal Demo</span>
+        <h3>Command Center</h3>
+        <p>Static demo of the Brain OS portal at localhost:8765. KPI strip, calendar view, action items, project tiles, and file search.</p>
+        <div class="card-tags">
+          <span class="tag">Fluent 2 UI</span>
+          <span class="tag">Dark Mode</span>
+          <span class="tag">Responsive</span>
+        </div>
+      </div>
+      <div class="card-type">
+        <span class="dot" style="background: var(--green);"></span>
+        Portal — <code>serve_artifacts.py</code>
+      </div>
+    </a>
+  </div>
+
+  <div class="section-title">Documents & Reports</div>
+  <div class="grid">
+    <a href="demos/demo_prd_notification_center.html" class="card">
+      <div class="card-accent" style="background: linear-gradient(90deg, var(--purple), var(--pink));"></div>
+      <div class="card-body">
+        <span class="card-badge" style="background: rgba(167,139,250,0.15); color: var(--purple);">PRD</span>
+        <h3>PRD: Notification Center</h3>
+        <p>Full Product Requirements Document with problem statement, user signals, acceptance criteria, success metrics, risks, and timeline.</p>
+        <div class="card-tags">
+          <span class="tag">Problem → Solution</span>
+          <span class="tag">Metrics</span>
+          <span class="tag">Risks</span>
+        </div>
+      </div>
+      <div class="card-type">
+        <span class="dot" style="background: var(--purple);"></span>
+        Generated by <code>/prd_writer</code>
+      </div>
+    </a>
+
+    <a href="demos/demo_mom_sprint_planning.html" class="card">
+      <div class="card-accent" style="background: linear-gradient(90deg, var(--yellow), #f59e0b);"></div>
+      <div class="card-body">
+        <span class="card-badge" style="background: rgba(251,191,36,0.15); color: var(--yellow);">MOM</span>
+        <h3>Sprint 14 Planning — Minutes</h3>
+        <p>Minutes of Meeting with agenda items, design decisions, action items with owners, and parking lot for deferred topics.</p>
+        <div class="card-tags">
+          <span class="tag">Decisions Table</span>
+          <span class="tag">Action Items</span>
+          <span class="tag">Parking Lot</span>
+        </div>
+      </div>
+      <div class="card-type">
+        <span class="dot" style="background: var(--yellow);"></span>
+        Generated by <code>/mom</code>
+      </div>
+    </a>
+
+    <a href="demos/demo_daily_brief.html" class="card">
+      <div class="card-accent" style="background: linear-gradient(90deg, var(--indigo), var(--cyan));"></div>
+      <div class="card-body">
+        <span class="card-badge" style="background: rgba(99,102,241,0.15); color: var(--blue);">Daily Brief</span>
+        <h3>Thursday Intelligence Brief</h3>
+        <p>AI-generated daily brief with priority actions, calendar prep, email highlights, ADO snapshot, OKR progress, and suggested focus blocks.</p>
+        <div class="card-tags">
+          <span class="tag">Priorities</span>
+          <span class="tag">Meeting Prep</span>
+          <span class="tag">OKRs</span>
+        </div>
+      </div>
+      <div class="card-type">
+        <span class="dot" style="background: var(--indigo);"></span>
+        Pipeline — <code>generate_brief.ps1</code>
+      </div>
+    </a>
+  </div>
+
+  <div class="info">
+    <h3>ℹ️ About These Demos</h3>
+    <p>All demo content is fictional — no real organizations, people, or projects are referenced. These artifacts showcase the output quality and formatting that Brain OS produces in real daily use.</p>
+    <p>Want to generate your own? <a href="https://github.com/kustonaut/brain-os#-quick-start">Get started with Brain OS →</a></p>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+      <path d="M12 6c-2.5 0-4.5 1.5-4.5 4 0 1.5.7 2.5 1.5 3.2V15c0 .5.5 1 1 1h4c.5 0 1-.5 1-1v-1.8c.8-.7 1.5-1.7 1.5-3.2 0-2.5-2-4-4.5-4z"/>
+      <path d="M10 18h4M11 21h2"/>
+    </svg>
+  </div>
+  <p>
+    <strong><a href="https://github.com/kustonaut/brain-os">Brain OS</a></strong><br/>
+    Built for PMs who believe their daily workflow deserves the same engineering rigor they demand from their products.
+  </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOM: Sprint 14 Planning — Brain OS Demo</title>
+<style>
+:root {
+  --bg: #11111b;
+  --surface: #1e1e2e;
+  --border: #313244;
+  --text: #cdd6f4;
+  --muted: #6c7086;
+  --cyan: #22d3ee;
+  --yellow: #fbbf24;
+  --green: #34d399;
+  --red: #f87171;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+  --blue: #60a5fa;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.7;
+  padding: 0;
+}
+.nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav a:hover { text-decoration: underline; }
+.nav .sep { color: var(--muted); }
+.nav .title { color: var(--text); font-weight: 600; }
+.badge {
+  display: inline-block;
+  background: var(--cyan);
+  color: var(--bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.content {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+h1 {
+  font-size: 28px;
+  color: var(--text);
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+h2 {
+  font-size: 20px;
+  color: var(--cyan);
+  margin-top: 32px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 {
+  font-size: 16px;
+  color: var(--yellow);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+p { margin-bottom: 12px; }
+strong { color: #f0f0f0; }
+em { color: var(--muted); font-style: italic; }
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul, ol {
+  margin: 8px 0 16px 24px;
+}
+li { margin-bottom: 4px; }
+li input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: var(--cyan);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 20px;
+  font-size: 14px;
+}
+th {
+  background: var(--surface);
+  color: var(--cyan);
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:nth-child(even) { background: rgba(30, 30, 46, 0.5); }
+blockquote {
+  border-left: 3px solid var(--yellow);
+  background: rgba(251, 191, 36, 0.05);
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 0 6px 6px 0;
+}
+blockquote p { margin-bottom: 0; }
+code {
+  background: var(--surface);
+  color: var(--green);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 13px;
+}
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--text);
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+.footer {
+  text-align: center;
+  padding: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+}
+.footer a { color: var(--cyan); }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../">← Brain OS Demos</a>
+  <span class="sep">·</span>
+  <span class="title">Minutes of Meeting</span>
+  <span class="sep">·</span>
+  <span class="badge">/mom skill</span>
+</div>
+<div class="content">
+<h1>Minutes of Meeting</h1>
+<h2>Meeting Details</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Meeting</strong></td>
+<td>Sprint 14 Planning — Notification Center</td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td>February 25, 2026 — 10:00 AM (60 min)</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>55 minutes</td>
+</tr>
+<tr>
+<td><strong>Organizer</strong></td>
+<td>Demo PM</td>
+</tr>
+<tr>
+<td><strong>Attendees</strong></td>
+<td>Demo PM, Sarah Chen (Eng Lead), Marcus Rivera (Design), Priya Patel (QA Lead), Alex Kim (Platform), Jordan Lee (Mobile)</td>
+</tr>
+<tr>
+<td><strong>Absent</strong></td>
+<td>Chris Wong (Backend — on PTO, async update sent)</td>
+</tr>
+<tr>
+<td><strong>Location</strong></td>
+<td>Teams — Sprint Planning Channel</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Agenda &amp; Discussion</h2>
+<h3>1. Sprint 13 Retrospective (5 min)</h3>
+<p><strong>Presenter:</strong> Sarah Chen</p>
+<p>Sprint 13 closed with 18/21 story points completed (86% velocity). The notification service API v1 integration was completed ahead of schedule. Two items carried over: the DND scheduling UI and the preference persistence layer. Team morale is high after shipping the notification feed MVP to internal dogfood.</p>
+<blockquote>
+<p>💡 <strong>Key Insight:</strong> Dogfood users reported that the feed "felt fast" — p95 load time was 120ms, well under the 200ms target.</p>
+</blockquote>
+<h3>2. Sprint 14 Scope Review (20 min)</h3>
+<p><strong>Presenter:</strong> Demo PM</p>
+<p>Reviewed 12 candidate stories for Sprint 14. After estimation, the team committed to 24 story points across 8 stories. Key items:</p>
+<ul>
+<li><strong>Priority filtering UI</strong> (5 pts) — Marcus has Figma mocks ready, will use existing FilterBar component</li>
+<li><strong>DND scheduling backend</strong> (8 pts) — Alex to build the scheduling service; discussed cron vs. calendar-based approaches</li>
+<li><strong>Daily digest email template</strong> (3 pts) — Reuse existing email framework; Priya flagged need for RTL language testing</li>
+<li><strong>Cross-device sync</strong> (5 pts) — Jordan working on WebSocket approach; fallback to polling if latency &gt; 5s</li>
+<li><strong>Accessibility audit prep</strong> (3 pts) — Marcus to run axe-core scan and document gaps before external audit</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Key Insight:</strong> Team agreed to use calendar-based DND scheduling (not cron) because users think in "meeting blocks" not "time expressions."</p>
+</blockquote>
+<h3>3. API v2 Migration Risk (15 min)</h3>
+<p><strong>Presenter:</strong> Alex Kim</p>
+<p>Platform team confirmed API v2 will be in public preview by March 15. Current v1 integration works but lacks batch-dismiss and priority-classification endpoints. Alex proposed a clean adapter pattern: build against v1 now, swap to v2 behind the adapter when ready. No code changes needed in the UI layer.</p>
+<blockquote>
+<p>⚠️ <strong>Risk:</strong> If v2 preview slips past March 30, we'll need to build batch-dismiss on v1 (estimated +3 pts).</p>
+</blockquote>
+<h3>4. Design Review: DND &amp; Digest (10 min)</h3>
+<p><strong>Presenter:</strong> Marcus Rivera</p>
+<p>Walked through three DND UI options:<br />
+- <strong>Option A:</strong> Toggle + time picker (simplest, but lacks recurring schedules)<br />
+- <strong>Option B:</strong> Calendar overlay with drag-to-select blocks (most intuitive, +2 pts)<br />
+- <strong>Option C:</strong> Preset buttons (Focus 2h / Meeting 1h / Custom) with one-tap activation</p>
+<p>Team voted for <strong>Option C</strong> with a "Custom" expansion that opens a time picker. Ships faster than Option B, covers 90% of use cases.</p>
+<blockquote>
+<p>💡 <strong>Pro Tip from Marcus:</strong> "Don't build a scheduling UI when presets solve 90% of the problem. We can always add the full calendar later."</p>
+</blockquote>
+<h3>5. QA Strategy (5 min)</h3>
+<p><strong>Presenter:</strong> Priya Patel</p>
+<p>QA will run automated regression on existing notification feed plus manual testing for new features. Priya requested a staging environment with &gt;1000 notifications seeded for performance testing. Alex confirmed staging can be seeded by March 3.</p>
+<hr />
+<h2>Decisions</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Decision</th>
+<th>Made By</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Use calendar-based DND scheduling (not cron)</td>
+<td>Team consensus</td>
+<td>Users think in meeting blocks, not time expressions</td>
+</tr>
+<tr>
+<td>2</td>
+<td>DND UI: Option C (presets + custom)</td>
+<td>Marcus + Team vote</td>
+<td>Ships faster, covers 90% of use cases</td>
+</tr>
+<tr>
+<td>3</td>
+<td>API v2 adapter pattern for migration</td>
+<td>Alex</td>
+<td>Zero UI code changes when v2 lands</td>
+</tr>
+<tr>
+<td>4</td>
+<td>RTL language testing included in Sprint 14 QA</td>
+<td>Priya</td>
+<td>18% of user base uses RTL languages</td>
+</tr>
+</tbody>
+</table>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Owner</th>
+<th>Deadline</th>
+<th>Priority</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Finalize Figma mocks for DND presets UI</td>
+<td>Marcus Rivera</td>
+<td>Feb 28</td>
+<td>🔴 High</td>
+<td>⬜ Open</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Build DND scheduling service (calendar-based)</td>
+<td>Alex Kim</td>
+<td>Mar 7</td>
+<td>🔴 High</td>
+<td>⬜ Open</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Seed staging environment with 1000+ notifications</td>
+<td>Alex Kim</td>
+<td>Mar 3</td>
+<td>🟡 Medium</td>
+<td>⬜ Open</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Set up RTL language test matrix</td>
+<td>Priya Patel</td>
+<td>Mar 3</td>
+<td>🟡 Medium</td>
+<td>⬜ Open</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Send async Sprint 14 scope summary to Chris Wong</td>
+<td>Demo PM</td>
+<td>Feb 26</td>
+<td>🟢 Low</td>
+<td>⬜ Open</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Draft v2 migration contingency plan (if preview slips)</td>
+<td>Alex Kim</td>
+<td>Mar 10</td>
+<td>🟡 Medium</td>
+<td>⬜ Open</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Schedule accessibility audit with external vendor</td>
+<td>Demo PM</td>
+<td>Mar 5</td>
+<td>🟡 Medium</td>
+<td>⬜ Open</td>
+</tr>
+</tbody>
+</table>
+<h2>Parking Lot</h2>
+<ul>
+<li><input type='checkbox' disabled> AI-powered notification summarization — revisit in Q3 planning</li>
+<li><input type='checkbox' disabled> Custom notification sounds — low demand, defer to v2</li>
+<li><input type='checkbox' disabled> Third-party source integration (Slack/Discord) — needs separate PRD and partner evaluation</li>
+</ul>
+<h2>Next Meeting</h2>
+<ul>
+<li><strong>Date:</strong> March 4, 2026 — 10:00 AM</li>
+<li><strong>Agenda Preview:</strong> Sprint 14 standup, DND design sign-off, staging environment demo</li>
+</ul>
+<hr />
+<p><em>Generated by Brain OS <code>/mom</code> — reviewed and approved for distribution</em></p>
+</div>
+<div class="footer">
+  <a href="https://github.com/kustonaut/brain-os">Brain OS</a> — AI-powered PM operating system
+</div>
+</body>
+</html>

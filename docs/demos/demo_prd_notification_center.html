@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRD: Notification Center — Brain OS Demo</title>
+<style>
+:root {
+  --bg: #11111b;
+  --surface: #1e1e2e;
+  --border: #313244;
+  --text: #cdd6f4;
+  --muted: #6c7086;
+  --cyan: #22d3ee;
+  --yellow: #fbbf24;
+  --green: #34d399;
+  --red: #f87171;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+  --blue: #60a5fa;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.7;
+  padding: 0;
+}
+.nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav a:hover { text-decoration: underline; }
+.nav .sep { color: var(--muted); }
+.nav .title { color: var(--text); font-weight: 600; }
+.badge {
+  display: inline-block;
+  background: var(--cyan);
+  color: var(--bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.content {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+h1 {
+  font-size: 28px;
+  color: var(--text);
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+h2 {
+  font-size: 20px;
+  color: var(--cyan);
+  margin-top: 32px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 {
+  font-size: 16px;
+  color: var(--yellow);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+p { margin-bottom: 12px; }
+strong { color: #f0f0f0; }
+em { color: var(--muted); font-style: italic; }
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul, ol {
+  margin: 8px 0 16px 24px;
+}
+li { margin-bottom: 4px; }
+li input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: var(--cyan);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 20px;
+  font-size: 14px;
+}
+th {
+  background: var(--surface);
+  color: var(--cyan);
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:nth-child(even) { background: rgba(30, 30, 46, 0.5); }
+blockquote {
+  border-left: 3px solid var(--yellow);
+  background: rgba(251, 191, 36, 0.05);
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 0 6px 6px 0;
+}
+blockquote p { margin-bottom: 0; }
+code {
+  background: var(--surface);
+  color: var(--green);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 13px;
+}
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--text);
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+.footer {
+  text-align: center;
+  padding: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+}
+.footer a { color: var(--cyan); }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../">← Brain OS Demos</a>
+  <span class="sep">·</span>
+  <span class="title">Product Requirements Document</span>
+  <span class="sep">·</span>
+  <span class="badge">/prd_writer skill</span>
+</div>
+<div class="content">
+<h1>PRD: Unified Notification Center</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Author</strong></td>
+<td>Demo PM</td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td>2026-02-27</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td><strong>Charter Area</strong></td>
+<td>Developer Experience</td>
+</tr>
+<tr>
+<td><strong>Related Work</strong></td>
+<td>ADO-12345, GH-789</td>
+</tr>
+</tbody>
+</table>
+<h2>Problem Statement</h2>
+<p>Users receive notifications across 4 separate channels (in-app, email, Teams, mobile push) with no centralized view. Support data shows 34% of escalations stem from "missed notification" — users didn't see a critical alert because it arrived in the wrong channel at the wrong time. Weekly active notification dismissal rate is 78%, suggesting notification fatigue from duplicates.</p>
+<h2>User Signal</h2>
+<ul>
+<li><strong>Support tickets:</strong> 142 tickets in Q4 2025 tagged "missed alert" or "notification not received"</li>
+<li><strong>User research (N=28):</strong> 89% of participants said "I miss important updates because there are too many unimportant ones"</li>
+<li><strong>Telemetry:</strong> Average user receives 47 notifications/day; opens only 6 (12.7% engagement rate)</li>
+<li><strong>Competitive:</strong> Figma, Linear, and Notion all shipped unified notification centers in 2025</li>
+</ul>
+<h2>Proposed Solution</h2>
+<p>A single <strong>Notification Center</strong> panel accessible from the global header that:<br />
+1. Aggregates all notification types into one feed<br />
+2. Allows priority-based filtering (Critical / Important / FYI)<br />
+3. Supports "Do Not Disturb" scheduling with smart escalation<br />
+4. Provides daily digest option for low-priority items<br />
+5. Remembers per-category preferences across sessions</p>
+<h3>User Experience</h3>
+<p><strong>Before:</strong></p>
+<pre><code>User opens app → checks in-app bell → checks email → checks Teams → checks mobile
+→ Still misses the one critical alert buried in 47 notifications
+</code></pre>
+<p><strong>After:</strong></p>
+<pre><code>User opens app → Notification Center badge shows &quot;2 critical&quot;
+→ Clicks → sees prioritized feed → acts on critical items → bulk-dismisses FYI
+→ Zero missed escalations
+</code></pre>
+<h2>Acceptance Criteria</h2>
+<ul>
+<li><input type='checkbox' disabled> All notification types appear in a single unified feed</li>
+<li><input type='checkbox' disabled> User can filter by priority level (Critical / Important / FYI)</li>
+<li><input type='checkbox' disabled> "Do Not Disturb" mode suppresses non-critical notifications for a configurable duration</li>
+<li><input type='checkbox' disabled> Critical notifications bypass DND and appear with visual + audio alert</li>
+<li><input type='checkbox' disabled> Daily digest email consolidates all FYI notifications from the past 24h</li>
+<li><input type='checkbox' disabled> User preferences persist across sessions and devices</li>
+<li><input type='checkbox' disabled> Feed loads in &lt; 200ms for up to 500 notifications</li>
+<li><input type='checkbox' disabled> Keyboard accessible (Tab, Enter, Escape, arrow keys)</li>
+</ul>
+<h2>Success Metrics</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current</th>
+<th>Target</th>
+<th>Timeframe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notification engagement rate</td>
+<td>12.7%</td>
+<td>35%</td>
+<td>90 days post-launch</td>
+</tr>
+<tr>
+<td>"Missed alert" support tickets</td>
+<td>142/quarter</td>
+<td>&lt; 50/quarter</td>
+<td>1 quarter post-launch</td>
+</tr>
+<tr>
+<td>Notification dismissal rate</td>
+<td>78%</td>
+<td>&lt; 40%</td>
+<td>90 days post-launch</td>
+</tr>
+<tr>
+<td>User satisfaction (CSAT)</td>
+<td>3.2/5</td>
+<td>4.0/5</td>
+<td>90 days post-launch</td>
+</tr>
+</tbody>
+</table>
+<h2>Dependencies</h2>
+<table>
+<thead>
+<tr>
+<th>Dependency</th>
+<th>Owner</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notification Service API v2</td>
+<td>Platform Team</td>
+<td>🟡 Medium — API in beta</td>
+</tr>
+<tr>
+<td>Push notification infrastructure</td>
+<td>Mobile Team</td>
+<td>🟢 Low — stable</td>
+</tr>
+<tr>
+<td>User preference storage</td>
+<td>Identity Team</td>
+<td>🟢 Low — existing system</td>
+</tr>
+<tr>
+<td>Email digest service</td>
+<td>Comms Team</td>
+<td>🟡 Medium — needs new template</td>
+</tr>
+</tbody>
+</table>
+<h2>Risks &amp; Mitigations</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Likelihood</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API v2 delays</td>
+<td>Medium</td>
+<td>High</td>
+<td>Implement with v1 fallback; v2 features as fast-follow</td>
+</tr>
+<tr>
+<td>Notification fatigue persists</td>
+<td>Low</td>
+<td>Medium</td>
+<td>A/B test priority algorithm before full rollout</td>
+</tr>
+<tr>
+<td>Cross-device sync latency</td>
+<td>Medium</td>
+<td>Low</td>
+<td>Accept 5s sync delay; show "syncing" indicator</td>
+</tr>
+<tr>
+<td>Accessibility gaps</td>
+<td>Low</td>
+<td>High</td>
+<td>Include accessibility review in design phase</td>
+</tr>
+</tbody>
+</table>
+<h2>Out of Scope</h2>
+<ul>
+<li>Custom notification sounds/ringtones (v2 consideration)</li>
+<li>AI-powered notification summarization (v2 consideration)</li>
+<li>Third-party notification sources (Slack, Discord, etc.)</li>
+<li>Admin-level notification policies (separate admin PRD needed)</li>
+</ul>
+<h2>Open Questions</h2>
+<ul>
+<li>❓ Should "Critical" classification be sender-defined or ML-based? — Owner: PM, Due: Sprint 1</li>
+<li>❓ What's the max notification retention period? (7 days? 30 days?) — Owner: Engineering, Due: Design Review</li>
+<li>❓ Do we need an API for external systems to mark notifications as "Critical"? — Owner: Platform, Due: Sprint 2</li>
+</ul>
+<h2>Timeline</h2>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spec Approved</td>
+<td>2026-03-07</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>Design Complete</td>
+<td>2026-03-21</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>Dev Start</td>
+<td>2026-03-28</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>Internal Dogfood</td>
+<td>2026-04-25</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>Public Preview</td>
+<td>2026-05-15</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>GA</td>
+<td>2026-06-01</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Generated by Brain OS <code>/prd_writer</code> — review and iterate before sharing</em></p>
+</div>
+<div class="footer">
+  <a href="https://github.com/kustonaut/brain-os">Brain OS</a> — AI-powered PM operating system
+</div>
+</body>
+</html>

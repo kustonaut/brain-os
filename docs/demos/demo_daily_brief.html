@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Brief — Thursday, Feb 27 — Brain OS Demo</title>
+<style>
+:root {
+  --bg: #11111b;
+  --surface: #1e1e2e;
+  --border: #313244;
+  --text: #cdd6f4;
+  --muted: #6c7086;
+  --cyan: #22d3ee;
+  --yellow: #fbbf24;
+  --green: #34d399;
+  --red: #f87171;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+  --blue: #60a5fa;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.7;
+  padding: 0;
+}
+.nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav a:hover { text-decoration: underline; }
+.nav .sep { color: var(--muted); }
+.nav .title { color: var(--text); font-weight: 600; }
+.badge {
+  display: inline-block;
+  background: var(--cyan);
+  color: var(--bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.content {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+h1 {
+  font-size: 28px;
+  color: var(--text);
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+h2 {
+  font-size: 20px;
+  color: var(--cyan);
+  margin-top: 32px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 {
+  font-size: 16px;
+  color: var(--yellow);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+p { margin-bottom: 12px; }
+strong { color: #f0f0f0; }
+em { color: var(--muted); font-style: italic; }
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul, ol {
+  margin: 8px 0 16px 24px;
+}
+li { margin-bottom: 4px; }
+li input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: var(--cyan);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 20px;
+  font-size: 14px;
+}
+th {
+  background: var(--surface);
+  color: var(--cyan);
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:nth-child(even) { background: rgba(30, 30, 46, 0.5); }
+blockquote {
+  border-left: 3px solid var(--yellow);
+  background: rgba(251, 191, 36, 0.05);
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 0 6px 6px 0;
+}
+blockquote p { margin-bottom: 0; }
+code {
+  background: var(--surface);
+  color: var(--green);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 13px;
+}
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--text);
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+.footer {
+  text-align: center;
+  padding: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+}
+.footer a { color: var(--cyan); }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../">← Brain OS Demos</a>
+  <span class="sep">·</span>
+  <span class="title">Daily Brief</span>
+  <span class="sep">·</span>
+  <span class="badge">Pipeline Output</span>
+</div>
+<div class="content">
+<h1>Daily Brief — Thursday, February 27, 2026</h1>
+<blockquote>
+<p>🕐 Generated at 08:35 AM | Week 9 of 2026 | Day: Thursday (Ship prep day)</p>
+</blockquote>
+<hr />
+<h2>🔴 Priority Actions Today</h2>
+<ol>
+<li><strong>API v2 adapter review</strong> — Alex Kim's PR #234 is ready for review. This is the critical path for Sprint 14. Review by EOD to unblock DND scheduling work.</li>
+<li><strong>Accessibility audit vendor selection</strong> — Three proposals received (AccuAudit, A11yPro, WebCheck). Decision needed by Friday. Marcus needs this to plan Sprint 15 remediation.</li>
+<li><strong>Digest email template</strong> — Comms team requested final copy by tomorrow. Draft is in <code>projects/dev-experience/Email_Template_Draft.md</code> — needs PM sign-off.</li>
+</ol>
+<h2>📅 Today's Calendar</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Meeting</th>
+<th>Prep Needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>09:30</td>
+<td><strong>Standup</strong> (15 min)</td>
+<td>Review Sprint 14 board — 3 items moved to "In Progress" yesterday</td>
+</tr>
+<tr>
+<td>11:00</td>
+<td><strong>Design Review: Notification Preferences</strong> (45 min)</td>
+<td>Marcus sharing preference panel mockups. Read [Design_Spec_Preferences.md] before meeting</td>
+</tr>
+<tr>
+<td>14:00</td>
+<td><strong>1:1 with Engineering Manager</strong> (30 min)</td>
+<td>Bring: Sprint 14 risk update, headcount request rationale, v2 migration timeline</td>
+</tr>
+<tr>
+<td>15:30</td>
+<td><strong>Cross-team Sync: Platform API</strong> (30 min)</td>
+<td>Ask about v2 preview date. Bring contingency plan if it slips past March 30</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Free blocks:</strong> 10:00–11:00, 12:00–14:00, 16:00–17:00</p>
+<h2>📧 Email Highlights (Last 24h)</h2>
+<ul>
+<li><strong>From: Platform Team</strong> — "API v2 Preview Timeline Update" — Preview now confirmed for <strong>March 12</strong> (3 days earlier than expected). Good news for Sprint 14.</li>
+<li><strong>From: QA Lead (Priya)</strong> — RTL test matrix ready for review. 14 language combinations identified. Link to test plan attached.</li>
+<li><strong>From: VP Engineering</strong> — Q2 planning kickoff moved to March 10. Need charter area OKR drafts by March 7.</li>
+<li><strong>From: External (AccuAudit)</strong> — Accessibility audit proposal: $4,200 for WCAG 2.1 AA compliance review. Turnaround: 10 business days.</li>
+</ul>
+<h2>📊 ADO Board Snapshot</h2>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Count</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔵 New</td>
+<td>3</td>
+<td>—</td>
+</tr>
+<tr>
+<td>🟡 In Progress</td>
+<td>5</td>
+<td>+2 from yesterday</td>
+</tr>
+<tr>
+<td>🟢 Done</td>
+<td>10</td>
+<td>+1 from yesterday</td>
+</tr>
+<tr>
+<td>🔴 Blocked</td>
+<td>1</td>
+<td>DND scheduling — waiting on design sign-off</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sprint 14 velocity:</strong> 8/24 pts completed (33%) — on track for March 7 close</p>
+<h2>💬 Teams Chat Highlights</h2>
+<ul>
+<li><strong>#notifications-dev:</strong> Jordan found a WebSocket connection leak in the sync prototype. Fix committed, needs review.</li>
+<li><strong>#design-reviews:</strong> Marcus posted DND preference panel screenshots — 👍 12 reactions, 2 comments with feedback</li>
+<li><strong>#general:</strong> Reminder: Company all-hands Friday at 16:00</li>
+</ul>
+<h2>⚠️ Stale Items (&gt;5 days without update)</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Days Stale</th>
+<th>Owner</th>
+<th>Last Update</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADO-12301: Update API docs for v1 endpoints</td>
+<td>7 days</td>
+<td>Chris Wong</td>
+<td>Feb 20 (PTO)</td>
+</tr>
+<tr>
+<td>ADO-12287: Mobile push notification opt-in flow</td>
+<td>6 days</td>
+<td>Jordan Lee</td>
+<td>Feb 21</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> Chris returns Monday — flag ADO-12301 for his first day back. Check with Jordan on ADO-12287 at standup.</p>
+<h2>🎯 OKR Progress This Week</h2>
+<table>
+<thead>
+<tr>
+<th>Key Result</th>
+<th>Target</th>
+<th>Current</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ship Notification Center to dogfood</td>
+<td>March 1</td>
+<td>MVP live, 3 features remaining</td>
+<td>🟡 At risk</td>
+</tr>
+<tr>
+<td>Reduce "missed alert" tickets by 50%</td>
+<td>&lt;71/quarter</td>
+<td>Tracking at ~60/quarter pace</td>
+<td>🟢 On track</td>
+</tr>
+<tr>
+<td>Notification engagement rate &gt; 25%</td>
+<td>25%</td>
+<td>22% (dogfood only)</td>
+<td>🟡 Needs push</td>
+</tr>
+</tbody>
+</table>
+<h2>📋 Suggested Focus Blocks</h2>
+<p>Based on your free time and priorities:</p>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Suggested Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10:00–11:00</td>
+<td>Review Alex's PR #234 (API v2 adapter)</td>
+</tr>
+<tr>
+<td>12:00–13:00</td>
+<td>Lunch + read accessibility audit proposals</td>
+</tr>
+<tr>
+<td>13:00–14:00</td>
+<td>Draft Q2 OKRs for charter area</td>
+</tr>
+<tr>
+<td>16:00–17:00</td>
+<td>Write async update for Chris Wong on Sprint 14 scope</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Generated by Brain OS daily pipeline — <a href="http://localhost:8765/brief">View in Command Center</a></em></p>
+</div>
+<div class="footer">
+  <a href="https://github.com/kustonaut/brain-os">Brain OS</a> — AI-powered PM operating system
+</div>
+</body>
+</html>
