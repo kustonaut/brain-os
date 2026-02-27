@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace">
+  <defs>
+    <linearGradient id="sBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11111b"/>
+      <stop offset="100%" style="stop-color:#1e1e2e"/>
+    </linearGradient>
+    <filter id="sShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <pattern id="sGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="0" cy="0" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="20" cy="0" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="0" cy="20" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="20" cy="20" r="0.4" fill="#313244" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <rect width="960" height="440" fill="url(#sBg)" rx="12"/>
+  <rect width="960" height="440" fill="url(#sGrid)" rx="12"/>
+
+  <!-- Title -->
+  <text x="480" y="30" text-anchor="middle" fill="#6c7086" font-size="10" font-weight="bold" letter-spacing="3">22 COPILOT SKILLS — YOUR AI PM CO-PILOT</text>
+
+  <!-- ═══ Category 1: Daily Workflow (Cyan) ═══ -->
+  <text x="36" y="62" fill="#22d3ee" font-size="11" font-weight="bold">DAILY WORKFLOW</text>
+  <line x1="36" y1="68" x2="230" y2="68" stroke="#22d3ee" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Skill cards row 1 -->
+  <g transform="translate(36, 78)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#22d3ee" font-size="10" font-weight="bold">/capture</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Decisions, AIs, signals</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">from meetings → files</text>
+  </g>
+  <g transform="translate(188, 78)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#22d3ee" font-size="10" font-weight="bold">/eod</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">End-of-day close-out</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">wins, logs, seed tomorrow</text>
+  </g>
+  <g transform="translate(340, 78)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#22d3ee" font-size="10" font-weight="bold">/mom</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Minutes of Meeting</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">transcript → notes</text>
+  </g>
+  <g transform="translate(492, 78)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#22d3ee" font-size="10" font-weight="bold">/kt_parser</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">KT session parser</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">recording → knowledge</text>
+  </g>
+
+  <!-- ═══ Category 2: Communication (Yellow) ═══ -->
+  <text x="36" y="162" fill="#fbbf24" font-size="11" font-weight="bold">COMMUNICATION</text>
+  <line x1="36" y1="168" x2="230" y2="168" stroke="#fbbf24" stroke-width="0.8" opacity="0.5"/>
+
+  <g transform="translate(36, 178)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#fbbf24" font-size="10" font-weight="bold">/m365_email_drafter</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Draft professional emails</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">templates + KB context</text>
+  </g>
+  <g transform="translate(188, 178)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#fbbf24" font-size="10" font-weight="bold">/m365_teams_comms</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Teams messages</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">standups, shoutouts</text>
+  </g>
+  <g transform="translate(340, 178)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#fbbf24" font-size="10" font-weight="bold">/m365_meeting_prep</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Meeting preparation</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">calendar + signals + KB</text>
+  </g>
+
+  <!-- ═══ Category 3: Analysis & Artifacts (Green) ═══ -->
+  <text x="36" y="262" fill="#34d399" font-size="11" font-weight="bold">ANALYSIS &amp; ARTIFACTS</text>
+  <line x1="36" y1="268" x2="260" y2="268" stroke="#34d399" stroke-width="0.8" opacity="0.5"/>
+
+  <g transform="translate(36, 278)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#34d399" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#34d399" font-size="10" font-weight="bold">/prd_writer</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">PRDs, one-pagers, RFCs</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">spec from scratch/signals</text>
+  </g>
+  <g transform="translate(188, 278)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#34d399" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#34d399" font-size="10" font-weight="bold">/dashboard_generator</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">HTML dashboards</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">Kusto, Excel, Power BI</text>
+  </g>
+  <g transform="translate(340, 278)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#34d399" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#34d399" font-size="10" font-weight="bold">/m365_doc_generator</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Word, PPT, Excel</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">templates + data</text>
+  </g>
+  <g transform="translate(492, 278)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#34d399" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#34d399" font-size="10" font-weight="bold">/design_spec</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">UI/UX specs, Figma</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">briefs + wireframes</text>
+  </g>
+  <g transform="translate(644, 278)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#34d399" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#34d399" font-size="10" font-weight="bold">/insights_to_spec</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Signal → Spec pipeline</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">patterns into features</text>
+  </g>
+
+  <!-- ═══ Category 4: Intelligence (Purple) ═══ -->
+  <text x="36" y="362" fill="#a78bfa" font-size="11" font-weight="bold">INTELLIGENCE &amp; OPS</text>
+  <line x1="36" y1="368" x2="252" y2="368" stroke="#a78bfa" stroke-width="0.8" opacity="0.5"/>
+
+  <g transform="translate(36, 378)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#a78bfa" font-size="10" font-weight="bold">/m365_ado_reporter</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Sprint health, burndown</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">stale items, WIQL</text>
+  </g>
+  <g transform="translate(188, 378)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#a78bfa" font-size="10" font-weight="bold">/feedback_synthesis</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Cross-source analysis</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">GitHub + ADO + emails</text>
+  </g>
+  <g transform="translate(340, 378)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#a78bfa" font-size="10" font-weight="bold">/deep_review</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">3-agent adversarial</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">code &amp; doc review</text>
+  </g>
+  <g transform="translate(492, 378)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#a78bfa" font-size="10" font-weight="bold">/pm_os_architect</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Design automations</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">extend the pipeline</text>
+  </g>
+  <g transform="translate(644, 378)">
+    <rect width="140" height="52" rx="6" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="10" y="20" fill="#a78bfa" font-size="10" font-weight="bold">/pm_workspace_kit</text>
+    <text x="10" y="36" fill="#6c7086" font-size="8">Setup, health, diag</text>
+    <text x="10" y="46" fill="#45475a" font-size="7">workspace management</text>
+  </g>
+
+  <!-- ═══ Right side: Additional skills ═══ -->
+  <g transform="translate(644, 78)">
+    <rect width="280" height="52" rx="6" fill="#1e1e2e" stroke="#f472b6" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="14" y="20" fill="#f472b6" font-size="10" font-weight="bold">+6 MORE SPECIALIZED SKILLS</text>
+    <text x="14" y="36" fill="#6c7086" font-size="8">/kusto_report  /kusto_telemetry  /icm</text>
+    <text x="14" y="46" fill="#6c7086" font-size="8">/tsg_writer  /ai_ready_docs  /pm_os_eval</text>
+  </g>
+
+  <!-- Right side: skill count badge -->
+  <g transform="translate(644, 148)">
+    <rect width="100" height="70" rx="8" fill="#1e1e2e" stroke="#6366f1" stroke-width="1.5" filter="url(#sShadow)"/>
+    <text x="50" y="36" text-anchor="middle" fill="#6366f1" font-size="28" font-weight="bold">22</text>
+    <text x="50" y="52" text-anchor="middle" fill="#6c7086" font-size="9">total skills</text>
+  </g>
+
+  <!-- Arrow suggesting flow -->
+  <g transform="translate(760, 148)">
+    <rect width="164" height="70" rx="8" fill="#1e1e2e" stroke="#313244" stroke-width="1" filter="url(#sShadow)"/>
+    <text x="82" y="22" text-anchor="middle" fill="#94a3b8" font-size="9">Skills are loaded</text>
+    <text x="82" y="36" text-anchor="middle" fill="#94a3b8" font-size="9">on-demand to keep</text>
+    <text x="82" y="50" text-anchor="middle" fill="#94a3b8" font-size="9">context window lean</text>
+    <text x="82" y="64" text-anchor="middle" fill="#45475a" font-size="8">~0% overhead when idle</text>
+  </g>
+</svg>

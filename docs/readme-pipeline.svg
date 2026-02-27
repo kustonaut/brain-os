@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 200" width="960" height="200" font-family="'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace">
+  <defs>
+    <linearGradient id="pipeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11111b"/>
+      <stop offset="100%" style="stop-color:#1e1e2e"/>
+    </linearGradient>
+    <linearGradient id="pipeAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22d3ee"/>
+      <stop offset="50%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    <filter id="pGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="pShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <pattern id="pGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="0" cy="0" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="20" cy="0" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="0" cy="20" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="20" cy="20" r="0.4" fill="#313244" opacity="0.4"/>
+    </pattern>
+    <marker id="pArrow" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 6 2.5, 0 5" fill="#45475a"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="200" fill="url(#pipeBg)" rx="12"/>
+  <rect width="960" height="200" fill="url(#pGrid)" rx="12"/>
+
+  <!-- Title -->
+  <text x="480" y="28" text-anchor="middle" fill="#6c7086" font-size="10" font-weight="bold" letter-spacing="3">DAILY PIPELINE — RUNS AUTOMATICALLY AT 8:30 AM</text>
+
+  <!-- Main flow line -->
+  <line x1="32" y1="95" x2="928" y2="95" stroke="#313244" stroke-width="2"/>
+
+  <!-- Step 0: Cleanup -->
+  <g transform="translate(56, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#94a3b8" stroke-width="1.2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#94a3b8" font-size="16">🧹</text>
+    <text x="0" y="26" text-anchor="middle" fill="#cdd6f4" font-size="8" font-weight="bold">CLEANUP</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Archive old</text>
+    <circle cx="0" cy="-12" r="9" fill="#1e1e2e" stroke="#94a3b8" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#94a3b8" font-size="7" font-weight="bold">0</text>
+  </g>
+  <line x1="86" y1="95" x2="112" y2="95" stroke="#45475a" stroke-width="1.5" marker-end="url(#pArrow)"/>
+
+  <!-- Step 1: Inbox -->
+  <g transform="translate(152, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#22d3ee" font-size="16">📥</text>
+    <text x="0" y="26" text-anchor="middle" fill="#cdd6f4" font-size="8" font-weight="bold">INBOX</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Parse files</text>
+    <circle cx="0" cy="-12" r="9" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#22d3ee" font-size="7" font-weight="bold">1</text>
+  </g>
+  <line x1="182" y1="95" x2="208" y2="95" stroke="#45475a" stroke-width="1.5" marker-end="url(#pArrow)"/>
+
+  <!-- Step 2: Emails -->
+  <g transform="translate(248, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#22d3ee" font-size="16">📧</text>
+    <text x="0" y="26" text-anchor="middle" fill="#cdd6f4" font-size="8" font-weight="bold">EMAILS</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Outlook/Graph</text>
+    <circle cx="0" cy="-12" r="9" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#22d3ee" font-size="7" font-weight="bold">2</text>
+  </g>
+  <line x1="278" y1="95" x2="304" y2="95" stroke="#45475a" stroke-width="1.5" marker-end="url(#pArrow)"/>
+
+  <!-- Step 3: Chats -->
+  <g transform="translate(344, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#22d3ee" font-size="16">💬</text>
+    <text x="0" y="26" text-anchor="middle" fill="#cdd6f4" font-size="8" font-weight="bold">CHATS</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Teams/Graph</text>
+    <circle cx="0" cy="-12" r="9" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#22d3ee" font-size="7" font-weight="bold">3</text>
+  </g>
+  <line x1="374" y1="95" x2="400" y2="95" stroke="#45475a" stroke-width="1.5" marker-end="url(#pArrow)"/>
+
+  <!-- Step 4: ADO -->
+  <g transform="translate(440, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#22d3ee" font-size="16">📋</text>
+    <text x="0" y="26" text-anchor="middle" fill="#cdd6f4" font-size="8" font-weight="bold">ADO</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Work items</text>
+    <circle cx="0" cy="-12" r="9" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#22d3ee" font-size="7" font-weight="bold">4</text>
+  </g>
+  <line x1="470" y1="95" x2="496" y2="95" stroke="#45475a" stroke-width="1.5" marker-end="url(#pArrow)"/>
+
+  <!-- Step 5: Calendar -->
+  <g transform="translate(536, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#22d3ee" font-size="16">📅</text>
+    <text x="0" y="26" text-anchor="middle" fill="#cdd6f4" font-size="8" font-weight="bold">CALENDAR</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Meetings</text>
+    <circle cx="0" cy="-12" r="9" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#22d3ee" font-size="7" font-weight="bold">5</text>
+  </g>
+  <line x1="566" y1="95" x2="592" y2="95" stroke="#45475a" stroke-width="1.5" marker-end="url(#pArrow)"/>
+
+  <!-- Step 6: Brief (highlighted) -->
+  <g transform="translate(632, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#fbbf24" stroke-width="2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#fbbf24" font-size="16">🧠</text>
+    <text x="0" y="26" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">AI BRIEF</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Synthesis</text>
+    <circle cx="0" cy="-12" r="9" fill="#fbbf24" stroke="#fbbf24" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#1e1e2e" font-size="7" font-weight="bold">6</text>
+  </g>
+  <line x1="662" y1="95" x2="688" y2="95" stroke="#45475a" stroke-width="1.5" marker-end="url(#pArrow)"/>
+
+  <!-- Step 7: Focus Blocks -->
+  <g transform="translate(728, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#34d399" stroke-width="1.2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#34d399" font-size="16">🎯</text>
+    <text x="0" y="26" text-anchor="middle" fill="#cdd6f4" font-size="8" font-weight="bold">FOCUS</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Block time</text>
+    <circle cx="0" cy="-12" r="9" fill="#1e1e2e" stroke="#34d399" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#34d399" font-size="7" font-weight="bold">7</text>
+  </g>
+  <line x1="758" y1="95" x2="784" y2="95" stroke="#45475a" stroke-width="1.5" marker-end="url(#pArrow)"/>
+
+  <!-- Step 8: Sync -->
+  <g transform="translate(824, 56)">
+    <rect x="-30" y="-8" width="60" height="56" rx="8" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.2" filter="url(#pShadow)"/>
+    <text x="0" y="7" text-anchor="middle" fill="#a78bfa" font-size="16">🔄</text>
+    <text x="0" y="26" text-anchor="middle" fill="#cdd6f4" font-size="8" font-weight="bold">SYNC</text>
+    <text x="0" y="38" text-anchor="middle" fill="#45475a" font-size="7">Instructions</text>
+    <circle cx="0" cy="-12" r="9" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#a78bfa" font-size="7" font-weight="bold">8</text>
+  </g>
+
+  <!-- Phase labels at bottom -->
+  <rect x="100" y="140" width="360" height="22" rx="4" fill="#1e1e2e" stroke="#22d3ee" stroke-width="0.8" opacity="0.6"/>
+  <text x="280" y="155" text-anchor="middle" fill="#22d3ee" font-size="9" opacity="0.8">FETCH — Gather signals from all sources</text>
+
+  <rect x="588" y="140" width="108" height="22" rx="4" fill="#1e1e2e" stroke="#fbbf24" stroke-width="0.8" opacity="0.6"/>
+  <text x="642" y="155" text-anchor="middle" fill="#fbbf24" font-size="9" opacity="0.8">SYNTHESIZE</text>
+
+  <rect x="704" y="140" width="168" height="22" rx="4" fill="#1e1e2e" stroke="#34d399" stroke-width="0.8" opacity="0.6"/>
+  <text x="788" y="155" text-anchor="middle" fill="#34d399" font-size="9" opacity="0.8">ACT — Block &amp; Sync</text>
+
+  <!-- Bottom note -->
+  <text x="480" y="186" text-anchor="middle" fill="#45475a" font-size="9">Configurable via config.json — add custom steps, change schedule, skip stages</text>
+</svg>

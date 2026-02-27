@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 210" width="960" height="210" font-family="'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace">
+  <defs>
+    <linearGradient id="kBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11111b"/>
+      <stop offset="100%" style="stop-color:#1e1e2e"/>
+    </linearGradient>
+    <filter id="kShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <pattern id="kGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="0" cy="0" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="20" cy="0" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="0" cy="20" r="0.4" fill="#313244" opacity="0.4"/>
+      <circle cx="20" cy="20" r="0.4" fill="#313244" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <rect width="960" height="210" fill="url(#kBg)" rx="12"/>
+  <rect width="960" height="210" fill="url(#kGrid)" rx="12"/>
+
+  <!-- Title -->
+  <text x="480" y="28" text-anchor="middle" fill="#6c7086" font-size="10" font-weight="bold" letter-spacing="3">KNOWLEDGE BASE — YOUR PM BRAIN</text>
+  <text x="480" y="44" text-anchor="middle" fill="#45475a" font-size="9">The more context you add, the smarter your daily brief becomes</text>
+
+  <!-- Card row -->
+  <!-- Goals -->
+  <g transform="translate(24, 60)">
+    <rect width="96" height="132" rx="8" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.2" filter="url(#kShadow)"/>
+    <rect width="96" height="4" rx="2" fill="#fbbf24" y="0" x="0" clip-path="inset(0 0 0 0 round 8px 8px 0 0)"/>
+    <rect width="96" height="4" y="0" rx="0" fill="#fbbf24" opacity="0.8" clip-path="inset(0 round 8px)"/>
+    <text x="48" y="28" text-anchor="middle" fill="#fbbf24" font-size="18">🎯</text>
+    <text x="48" y="46" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Goals.md</text>
+    <text x="48" y="62" text-anchor="middle" fill="#6c7086" font-size="7">OKRs</text>
+    <text x="48" y="74" text-anchor="middle" fill="#6c7086" font-size="7">Key Results</text>
+    <text x="48" y="86" text-anchor="middle" fill="#6c7086" font-size="7">Metric Targets</text>
+    <text x="48" y="98" text-anchor="middle" fill="#6c7086" font-size="7">Weekly Reflect</text>
+    <rect x="18" y="108" width="60" height="14" rx="3" fill="#fbbf24" opacity="0.15"/>
+    <text x="48" y="118" text-anchor="middle" fill="#fbbf24" font-size="7">GRAVITY CENTER</text>
+  </g>
+
+  <!-- Action Items -->
+  <g transform="translate(130, 60)">
+    <rect width="96" height="132" rx="8" fill="#1e1e2e" stroke="#ef4444" stroke-width="1.2" filter="url(#kShadow)"/>
+    <rect width="96" height="4" y="0" rx="0" fill="#ef4444" opacity="0.8" clip-path="inset(0 round 8px)"/>
+    <text x="48" y="28" text-anchor="middle" fill="#ef4444" font-size="18">🔥</text>
+    <text x="48" y="46" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Action_Items</text>
+    <text x="48" y="62" text-anchor="middle" fill="#6c7086" font-size="7">Open tasks</text>
+    <text x="48" y="74" text-anchor="middle" fill="#6c7086" font-size="7">🔴 🟡 ⚪ urgency</text>
+    <text x="48" y="86" text-anchor="middle" fill="#6c7086" font-size="7">Stale detection</text>
+    <text x="48" y="98" text-anchor="middle" fill="#6c7086" font-size="7">Auto-flagged</text>
+  </g>
+
+  <!-- Key Contacts -->
+  <g transform="translate(236, 60)">
+    <rect width="96" height="132" rx="8" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1.2" filter="url(#kShadow)"/>
+    <rect width="96" height="4" y="0" rx="0" fill="#22d3ee" opacity="0.8" clip-path="inset(0 round 8px)"/>
+    <text x="48" y="28" text-anchor="middle" fill="#22d3ee" font-size="18">👥</text>
+    <text x="48" y="46" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Key_Contacts</text>
+    <text x="48" y="62" text-anchor="middle" fill="#6c7086" font-size="7">People</text>
+    <text x="48" y="74" text-anchor="middle" fill="#6c7086" font-size="7">Aliases &amp; Roles</text>
+    <text x="48" y="86" text-anchor="middle" fill="#6c7086" font-size="7">Relationships</text>
+    <text x="48" y="98" text-anchor="middle" fill="#6c7086" font-size="7">Email lookup</text>
+  </g>
+
+  <!-- Charter Areas -->
+  <g transform="translate(342, 60)">
+    <rect width="96" height="132" rx="8" fill="#1e1e2e" stroke="#34d399" stroke-width="1.2" filter="url(#kShadow)"/>
+    <rect width="96" height="4" y="0" rx="0" fill="#34d399" opacity="0.8" clip-path="inset(0 round 8px)"/>
+    <text x="48" y="28" text-anchor="middle" fill="#34d399" font-size="18">📦</text>
+    <text x="48" y="46" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Charter_Areas</text>
+    <text x="48" y="62" text-anchor="middle" fill="#6c7086" font-size="7">Project scope</text>
+    <text x="48" y="74" text-anchor="middle" fill="#6c7086" font-size="7">Features</text>
+    <text x="48" y="86" text-anchor="middle" fill="#6c7086" font-size="7">Architecture</text>
+    <text x="48" y="98" text-anchor="middle" fill="#6c7086" font-size="7">Transition ctx</text>
+  </g>
+
+  <!-- Processes Reference -->
+  <g transform="translate(448, 60)">
+    <rect width="96" height="132" rx="8" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.2" filter="url(#kShadow)"/>
+    <rect width="96" height="4" y="0" rx="0" fill="#a78bfa" opacity="0.8" clip-path="inset(0 round 8px)"/>
+    <text x="48" y="28" text-anchor="middle" fill="#a78bfa" font-size="18">⚙️</text>
+    <text x="48" y="46" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Processes</text>
+    <text x="48" y="62" text-anchor="middle" fill="#6c7086" font-size="7">Playbooks</text>
+    <text x="48" y="74" text-anchor="middle" fill="#6c7086" font-size="7">Tech notes</text>
+    <text x="48" y="86" text-anchor="middle" fill="#6c7086" font-size="7">Architecture</text>
+    <text x="48" y="98" text-anchor="middle" fill="#6c7086" font-size="7">Runbooks</text>
+  </g>
+
+  <!-- AI PM Skills -->
+  <g transform="translate(554, 60)">
+    <rect width="96" height="132" rx="8" fill="#1e1e2e" stroke="#f472b6" stroke-width="1.2" filter="url(#kShadow)"/>
+    <rect width="96" height="4" y="0" rx="0" fill="#f472b6" opacity="0.8" clip-path="inset(0 round 8px)"/>
+    <text x="48" y="28" text-anchor="middle" fill="#f472b6" font-size="18">🤖</text>
+    <text x="48" y="46" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">AI_PM_Skills</text>
+    <text x="48" y="62" text-anchor="middle" fill="#6c7086" font-size="7">Prompt tech</text>
+    <text x="48" y="74" text-anchor="middle" fill="#6c7086" font-size="7">Temperature</text>
+    <text x="48" y="86" text-anchor="middle" fill="#6c7086" font-size="7">Model routing</text>
+    <text x="48" y="98" text-anchor="middle" fill="#6c7086" font-size="7">CoT patterns</text>
+  </g>
+
+  <!-- Trust Boundaries -->
+  <g transform="translate(660, 60)">
+    <rect width="96" height="132" rx="8" fill="#1e1e2e" stroke="#f97316" stroke-width="1.2" filter="url(#kShadow)"/>
+    <rect width="96" height="4" y="0" rx="0" fill="#f97316" opacity="0.8" clip-path="inset(0 round 8px)"/>
+    <text x="48" y="28" text-anchor="middle" fill="#f97316" font-size="18">🛡️</text>
+    <text x="48" y="46" text-anchor="middle" fill="#cdd6f4" font-size="9" font-weight="bold">Trust_Bounds</text>
+    <text x="48" y="62" text-anchor="middle" fill="#6c7086" font-size="7">L0→L4 levels</text>
+    <text x="48" y="74" text-anchor="middle" fill="#6c7086" font-size="7">Permissions</text>
+    <text x="48" y="86" text-anchor="middle" fill="#6c7086" font-size="7">Escalation</text>
+    <text x="48" y="98" text-anchor="middle" fill="#6c7086" font-size="7">Data classify</text>
+  </g>
+
+  <!-- Agent Build + Failure -->
+  <g transform="translate(766, 60)">
+    <rect width="170" height="60" rx="8" fill="#1e1e2e" stroke="#94a3b8" stroke-width="1" filter="url(#kShadow)"/>
+    <text x="14" y="20" fill="#94a3b8" font-size="18">✅</text>
+    <text x="40" y="20" fill="#cdd6f4" font-size="9" font-weight="bold">Agent_Build_Checklist</text>
+    <text x="40" y="34" fill="#6c7086" font-size="7">10-question pre-mortem</text>
+    <text x="40" y="46" fill="#6c7086" font-size="7">for new automations</text>
+  </g>
+
+  <g transform="translate(766, 128)">
+    <rect width="170" height="60" rx="8" fill="#1e1e2e" stroke="#94a3b8" stroke-width="1" filter="url(#kShadow)"/>
+    <text x="14" y="20" fill="#94a3b8" font-size="18">🔧</text>
+    <text x="40" y="20" fill="#cdd6f4" font-size="9" font-weight="bold">Failure_Playbook</text>
+    <text x="40" y="34" fill="#6c7086" font-size="7">Dev / LLM / Production</text>
+    <text x="40" y="46" fill="#6c7086" font-size="7">failure taxonomy + fixes</text>
+  </g>
+</svg>

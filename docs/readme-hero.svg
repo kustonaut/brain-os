@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="960" height="320" font-family="'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace">
+  <defs>
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11111b"/>
+      <stop offset="100%" style="stop-color:#1e1e2e"/>
+    </linearGradient>
+    <linearGradient id="heroAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="yellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f472b6"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="none"/>
+      <circle cx="0" cy="0" r="0.5" fill="#313244" opacity="0.5"/>
+      <circle cx="24" cy="0" r="0.5" fill="#313244" opacity="0.5"/>
+      <circle cx="0" cy="24" r="0.5" fill="#313244" opacity="0.5"/>
+      <circle cx="24" cy="24" r="0.5" fill="#313244" opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="320" fill="url(#heroBg)" rx="12"/>
+  <rect width="960" height="320" fill="url(#grid)" rx="12"/>
+
+  <!-- Decorative glow orbs -->
+  <circle cx="120" cy="160" r="100" fill="#6366f1" opacity="0.04"/>
+  <circle cx="840" cy="160" r="120" fill="#8b5cf6" opacity="0.04"/>
+  <circle cx="480" cy="80" r="80" fill="#22d3ee" opacity="0.03"/>
+
+  <!-- Brain icon (compact version) -->
+  <g transform="translate(148,100)" filter="url(#glow)">
+    <rect x="-44" y="-44" width="88" height="88" rx="20" fill="url(#heroAccent)" filter="url(#shadow)"/>
+    <g fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-1,-22 C-14,-22 -24,-14 -24,-3 C-24,2 -21,6 -17,8 C-21,10 -24,15 -22,21 C-20,27 -14,29 -9,27 C-6,30 -1,30 -1,27"/>
+      <path d="M-1,-22 C-1,-22 -11,-16 -11,-6 C-11,4 -1,8 -1,8"/>
+      <path d="M-1,8 C-1,8 -14,11 -14,19"/>
+      <path d="M1,-22 C14,-22 24,-14 24,-3 C24,2 21,6 17,8 C21,10 24,15 22,21 C20,27 14,29 9,27 C6,30 1,30 1,27"/>
+      <path d="M1,-22 C1,-22 11,-16 11,-6 C11,4 1,8 1,8"/>
+      <path d="M1,8 C1,8 14,11 14,19"/>
+      <line x1="0" y1="-22" x2="0" y2="27"/>
+    </g>
+    <circle cx="30" cy="-30" r="5" fill="#fbbf24"/>
+    <circle cx="30" cy="-30" r="2.5" fill="#fff"/>
+  </g>
+
+  <!-- Title -->
+  <text x="250" y="88" fill="#cdd6f4" font-size="42" font-weight="bold" filter="url(#glow)">Brain OS</text>
+
+  <!-- Subtitle -->
+  <text x="250" y="120" fill="#6c7086" font-size="15">An AI-powered daily operating system for Product Managers</text>
+
+  <!-- Feature pills row -->
+  <g transform="translate(250, 142)">
+    <!-- Pill 1 -->
+    <rect x="0" y="0" width="130" height="28" rx="14" fill="#1e1e2e" stroke="#22d3ee" stroke-width="1"/>
+    <circle cx="14" cy="14" r="4" fill="#22d3ee"/>
+    <text x="24" y="18" fill="#22d3ee" font-size="10">Auto-Fetch Signals</text>
+
+    <!-- Pill 2 -->
+    <rect x="142" y="0" width="120" height="28" rx="14" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1"/>
+    <circle cx="156" cy="14" r="4" fill="#fbbf24"/>
+    <text x="166" y="18" fill="#fbbf24" font-size="10">AI Daily Brief</text>
+
+    <!-- Pill 3 -->
+    <rect x="274" y="0" width="136" height="28" rx="14" fill="#1e1e2e" stroke="#34d399" stroke-width="1"/>
+    <circle cx="288" cy="14" r="4" fill="#34d399"/>
+    <text x="298" y="18" fill="#34d399" font-size="10">Command Center</text>
+
+    <!-- Pill 4 -->
+    <rect x="422" y="0" width="120" height="28" rx="14" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1"/>
+    <circle cx="436" cy="14" r="4" fill="#a78bfa"/>
+    <text x="446" y="18" fill="#a78bfa" font-size="10">22 Copilot Skills</text>
+  </g>
+
+  <!-- Tech stack pills -->
+  <g transform="translate(250, 182)">
+    <text x="0" y="12" fill="#45475a" font-size="10">BUILT WITH</text>
+    <rect x="76" y="0" width="64" height="22" rx="4" fill="#181825" stroke="#313244" stroke-width="0.8"/>
+    <text x="108" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">VS Code</text>
+    <rect x="148" y="0" width="56" height="22" rx="4" fill="#181825" stroke="#313244" stroke-width="0.8"/>
+    <text x="176" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">Copilot</text>
+    <rect x="212" y="0" width="54" height="22" rx="4" fill="#181825" stroke="#313244" stroke-width="0.8"/>
+    <text x="239" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">Python</text>
+    <rect x="274" y="0" width="78" height="22" rx="4" fill="#181825" stroke="#313244" stroke-width="0.8"/>
+    <text x="313" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">PowerShell</text>
+    <rect x="360" y="0" width="74" height="22" rx="4" fill="#181825" stroke="#313244" stroke-width="0.8"/>
+    <text x="397" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">Graph API</text>
+  </g>
+
+  <!-- Stats bar at bottom -->
+  <rect x="0" y="280" width="960" height="40" fill="#181825" rx="0"/>
+  <rect x="0" y="280" width="960" height="1" fill="#313244"/>
+
+  <!-- Stat items -->
+  <g transform="translate(80, 296)">
+    <text x="0" y="12" fill="#22d3ee" font-size="16" font-weight="bold">10</text>
+    <text x="28" y="12" fill="#6c7086" font-size="10">Pipeline Steps</text>
+  </g>
+  <rect x="200" y="288" width="1" height="20" fill="#313244"/>
+  <g transform="translate(230, 296)">
+    <text x="0" y="12" fill="#fbbf24" font-size="16" font-weight="bold">22</text>
+    <text x="28" y="12" fill="#6c7086" font-size="10">Copilot Skills</text>
+  </g>
+  <rect x="370" y="288" width="1" height="20" fill="#313244"/>
+  <g transform="translate(400, 296)">
+    <text x="0" y="12" fill="#34d399" font-size="16" font-weight="bold">9</text>
+    <text x="18" y="12" fill="#6c7086" font-size="10">Knowledge Base Files</text>
+  </g>
+  <rect x="580" y="288" width="1" height="20" fill="#313244"/>
+  <g transform="translate(610, 296)">
+    <text x="0" y="12" fill="#a78bfa" font-size="16" font-weight="bold">5</text>
+    <text x="18" y="12" fill="#6c7086" font-size="10">Signal Sources</text>
+  </g>
+  <rect x="750" y="288" width="1" height="20" fill="#313244"/>
+  <g transform="translate(780, 296)">
+    <text x="0" y="12" fill="#f472b6" font-size="16" font-weight="bold">100%</text>
+    <text x="48" y="12" fill="#6c7086" font-size="10">Local-First</text>
+  </g>
+</svg>
