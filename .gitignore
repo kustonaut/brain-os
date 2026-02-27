@@ -42,3 +42,8 @@ desktop.ini
 
 # Archives
 08_Archive/
+
+# Generated artifacts (large binaries — keep locally, not in repo)
+*.pptx
+*.docx
+*.xlsx
